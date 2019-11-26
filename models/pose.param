@@ -1,0 +1,52 @@
+7767517
+50 58
+Input                    data                     0 1 data
+Convolution              resnetv1b_conv0_fwd      1 1 data resnetv1b_relu0_fwd 0=64 1=7 3=2 4=3 5=1 6=9408 9=1
+Pooling                  resnetv1b_pool0_fwd      1 1 resnetv1b_relu0_fwd resnetv1b_pool0_fwd 1=3 2=2 3=1 5=1
+Split                    splitncnn_0              1 2 resnetv1b_pool0_fwd resnetv1b_pool0_fwd_splitncnn_0 resnetv1b_pool0_fwd_splitncnn_1
+Convolution              resnetv1b_layers1_conv0_fwd 1 1 resnetv1b_pool0_fwd_splitncnn_1 resnetv1b_layers1_relu0_fwd 0=64 1=3 4=1 5=1 6=36864 9=1
+Convolution              resnetv1b_layers1_conv1_fwd 1 1 resnetv1b_layers1_relu0_fwd resnetv1b_layers1_batchnormcudnnoff1_fwd 0=64 1=3 4=1 5=1 6=36864
+BinaryOp                 resnetv1b_layers1_basicblockv1b0__plus0 2 1 resnetv1b_layers1_batchnormcudnnoff1_fwd resnetv1b_pool0_fwd_splitncnn_0 resnetv1b_layers1_basicblockv1b0__plus0
+ReLU                     resnetv1b_layers1_relu1_fwd 1 1 resnetv1b_layers1_basicblockv1b0__plus0 resnetv1b_layers1_relu1_fwd
+Split                    splitncnn_1              1 2 resnetv1b_layers1_relu1_fwd resnetv1b_layers1_relu1_fwd_splitncnn_0 resnetv1b_layers1_relu1_fwd_splitncnn_1
+Convolution              resnetv1b_layers1_conv2_fwd 1 1 resnetv1b_layers1_relu1_fwd_splitncnn_1 resnetv1b_layers1_relu2_fwd 0=64 1=3 4=1 5=1 6=36864 9=1
+Convolution              resnetv1b_layers1_conv3_fwd 1 1 resnetv1b_layers1_relu2_fwd resnetv1b_layers1_batchnormcudnnoff3_fwd 0=64 1=3 4=1 5=1 6=36864
+BinaryOp                 resnetv1b_layers1_basicblockv1b1__plus0 2 1 resnetv1b_layers1_batchnormcudnnoff3_fwd resnetv1b_layers1_relu1_fwd_splitncnn_0 resnetv1b_layers1_basicblockv1b1__plus0
+ReLU                     resnetv1b_layers1_relu3_fwd 1 1 resnetv1b_layers1_basicblockv1b1__plus0 resnetv1b_layers1_relu3_fwd
+Split                    splitncnn_2              1 2 resnetv1b_layers1_relu3_fwd resnetv1b_layers1_relu3_fwd_splitncnn_0 resnetv1b_layers1_relu3_fwd_splitncnn_1
+Convolution              resnetv1b_layers2_conv0_fwd 1 1 resnetv1b_layers1_relu3_fwd_splitncnn_1 resnetv1b_layers2_relu0_fwd 0=128 1=3 3=2 4=1 5=1 6=73728 9=1
+Convolution              resnetv1b_layers2_conv1_fwd 1 1 resnetv1b_layers2_relu0_fwd resnetv1b_layers2_batchnormcudnnoff1_fwd 0=128 1=3 4=1 5=1 6=147456
+Convolution              resnetv1b_down2_conv0_fwd 1 1 resnetv1b_layers1_relu3_fwd_splitncnn_0 resnetv1b_down2_batchnormcudnnoff0_fwd 0=128 1=1 3=2 5=1 6=8192
+BinaryOp                 resnetv1b_layers2_basicblockv1b0__plus0 2 1 resnetv1b_layers2_batchnormcudnnoff1_fwd resnetv1b_down2_batchnormcudnnoff0_fwd resnetv1b_layers2_basicblockv1b0__plus0
+ReLU                     resnetv1b_layers2_relu1_fwd 1 1 resnetv1b_layers2_basicblockv1b0__plus0 resnetv1b_layers2_relu1_fwd
+Split                    splitncnn_3              1 2 resnetv1b_layers2_relu1_fwd resnetv1b_layers2_relu1_fwd_splitncnn_0 resnetv1b_layers2_relu1_fwd_splitncnn_1
+Convolution              resnetv1b_layers2_conv2_fwd 1 1 resnetv1b_layers2_relu1_fwd_splitncnn_1 resnetv1b_layers2_relu2_fwd 0=128 1=3 4=1 5=1 6=147456 9=1
+Convolution              resnetv1b_layers2_conv3_fwd 1 1 resnetv1b_layers2_relu2_fwd resnetv1b_layers2_batchnormcudnnoff3_fwd 0=128 1=3 4=1 5=1 6=147456
+BinaryOp                 resnetv1b_layers2_basicblockv1b1__plus0 2 1 resnetv1b_layers2_batchnormcudnnoff3_fwd resnetv1b_layers2_relu1_fwd_splitncnn_0 resnetv1b_layers2_basicblockv1b1__plus0
+ReLU                     resnetv1b_layers2_relu3_fwd 1 1 resnetv1b_layers2_basicblockv1b1__plus0 resnetv1b_layers2_relu3_fwd
+Split                    splitncnn_4              1 2 resnetv1b_layers2_relu3_fwd resnetv1b_layers2_relu3_fwd_splitncnn_0 resnetv1b_layers2_relu3_fwd_splitncnn_1
+Convolution              resnetv1b_layers3_conv0_fwd 1 1 resnetv1b_layers2_relu3_fwd_splitncnn_1 resnetv1b_layers3_relu0_fwd 0=256 1=3 3=2 4=1 5=1 6=294912 9=1
+Convolution              resnetv1b_layers3_conv1_fwd 1 1 resnetv1b_layers3_relu0_fwd resnetv1b_layers3_batchnormcudnnoff1_fwd 0=256 1=3 4=1 5=1 6=589824
+Convolution              resnetv1b_down3_conv0_fwd 1 1 resnetv1b_layers2_relu3_fwd_splitncnn_0 resnetv1b_down3_batchnormcudnnoff0_fwd 0=256 1=1 3=2 5=1 6=32768
+BinaryOp                 resnetv1b_layers3_basicblockv1b0__plus0 2 1 resnetv1b_layers3_batchnormcudnnoff1_fwd resnetv1b_down3_batchnormcudnnoff0_fwd resnetv1b_layers3_basicblockv1b0__plus0
+ReLU                     resnetv1b_layers3_relu1_fwd 1 1 resnetv1b_layers3_basicblockv1b0__plus0 resnetv1b_layers3_relu1_fwd
+Split                    splitncnn_5              1 2 resnetv1b_layers3_relu1_fwd resnetv1b_layers3_relu1_fwd_splitncnn_0 resnetv1b_layers3_relu1_fwd_splitncnn_1
+Convolution              resnetv1b_layers3_conv2_fwd 1 1 resnetv1b_layers3_relu1_fwd_splitncnn_1 resnetv1b_layers3_relu2_fwd 0=256 1=3 4=1 5=1 6=589824 9=1
+Convolution              resnetv1b_layers3_conv3_fwd 1 1 resnetv1b_layers3_relu2_fwd resnetv1b_layers3_batchnormcudnnoff3_fwd 0=256 1=3 4=1 5=1 6=589824
+BinaryOp                 resnetv1b_layers3_basicblockv1b1__plus0 2 1 resnetv1b_layers3_batchnormcudnnoff3_fwd resnetv1b_layers3_relu1_fwd_splitncnn_0 resnetv1b_layers3_basicblockv1b1__plus0
+ReLU                     resnetv1b_layers3_relu3_fwd 1 1 resnetv1b_layers3_basicblockv1b1__plus0 resnetv1b_layers3_relu3_fwd
+Split                    splitncnn_6              1 2 resnetv1b_layers3_relu3_fwd resnetv1b_layers3_relu3_fwd_splitncnn_0 resnetv1b_layers3_relu3_fwd_splitncnn_1
+Convolution              resnetv1b_layers4_conv0_fwd 1 1 resnetv1b_layers3_relu3_fwd_splitncnn_1 resnetv1b_layers4_relu0_fwd 0=512 1=3 3=2 4=1 5=1 6=1179648 9=1
+Convolution              resnetv1b_layers4_conv1_fwd 1 1 resnetv1b_layers4_relu0_fwd resnetv1b_layers4_batchnormcudnnoff1_fwd 0=512 1=3 4=1 5=1 6=2359296
+Convolution              resnetv1b_down4_conv0_fwd 1 1 resnetv1b_layers3_relu3_fwd_splitncnn_0 resnetv1b_down4_batchnormcudnnoff0_fwd 0=512 1=1 3=2 5=1 6=131072
+BinaryOp                 resnetv1b_layers4_basicblockv1b0__plus0 2 1 resnetv1b_layers4_batchnormcudnnoff1_fwd resnetv1b_down4_batchnormcudnnoff0_fwd resnetv1b_layers4_basicblockv1b0__plus0
+ReLU                     resnetv1b_layers4_relu1_fwd 1 1 resnetv1b_layers4_basicblockv1b0__plus0 resnetv1b_layers4_relu1_fwd
+Split                    splitncnn_7              1 2 resnetv1b_layers4_relu1_fwd resnetv1b_layers4_relu1_fwd_splitncnn_0 resnetv1b_layers4_relu1_fwd_splitncnn_1
+Convolution              resnetv1b_layers4_conv2_fwd 1 1 resnetv1b_layers4_relu1_fwd_splitncnn_1 resnetv1b_layers4_relu2_fwd 0=512 1=3 4=1 5=1 6=2359296 9=1
+Convolution              resnetv1b_layers4_conv3_fwd 1 1 resnetv1b_layers4_relu2_fwd resnetv1b_layers4_batchnormcudnnoff3_fwd 0=512 1=3 4=1 5=1 6=2359296
+BinaryOp                 resnetv1b_layers4_basicblockv1b1__plus0 2 1 resnetv1b_layers4_batchnormcudnnoff3_fwd resnetv1b_layers4_relu1_fwd_splitncnn_0 resnetv1b_layers4_basicblockv1b1__plus0
+ReLU                     resnetv1b_layers4_relu3_fwd 1 1 resnetv1b_layers4_basicblockv1b1__plus0 resnetv1b_layers4_relu3_fwd
+Deconvolution            conv0_fwd                1 1 resnetv1b_layers4_relu3_fwd relu0_fwd 0=256 1=4 3=2 4=1 5=1 6=2097152 9=1
+Deconvolution            conv1_fwd                1 1 relu0_fwd relu1_fwd 0=256 1=4 3=2 4=1 5=1 6=1048576 9=1
+Deconvolution            conv2_fwd                1 1 relu1_fwd relu2_fwd 0=256 1=4 3=2 4=1 5=1 6=1048576 9=1
+Convolution              conv3_fwd                1 1 relu2_fwd conv3_fwd 0=17 1=1 5=1 6=4352

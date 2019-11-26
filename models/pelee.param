@@ -1,0 +1,266 @@
+7767517
+264 337
+Input                    data                     0 1 data 0=304 1=304 2=3
+Split                    splitncnn_0              1 7 data data_splitncnn_0 data_splitncnn_1 data_splitncnn_2 data_splitncnn_3 data_splitncnn_4 data_splitncnn_5 data_splitncnn_6
+Convolution              stem1                    1 1 data_splitncnn_6 stem1_stem1/relu 0=32 1=3 3=2 4=1 5=1 6=864 9=1
+Split                    splitncnn_1              1 2 stem1_stem1/relu stem1_stem1/relu_splitncnn_0 stem1_stem1/relu_splitncnn_1
+Convolution              stem2a                   1 1 stem1_stem1/relu_splitncnn_1 stem2a_stem2a/relu 0=16 1=1 5=1 6=512 9=1
+Convolution              stem2b                   1 1 stem2a_stem2a/relu stem2b_stem2b/relu 0=32 1=3 3=2 4=1 5=1 6=4608 9=1
+Pooling                  stem/pool                1 1 stem1_stem1/relu_splitncnn_0 stem/pool 1=2 2=2
+Concat                   stem/concat              2 1 stem/pool stem2b_stem2b/relu stem/concat
+Convolution              stem3                    1 1 stem/concat stem3_stem3/relu 0=32 1=1 5=1 6=2048 9=1
+Split                    splitncnn_2              1 3 stem3_stem3/relu stem3_stem3/relu_splitncnn_0 stem3_stem3/relu_splitncnn_1 stem3_stem3/relu_splitncnn_2
+Convolution              stage1_1/branch1a        1 1 stem3_stem3/relu_splitncnn_2 stage1_1/branch1a_stage1_1/branch1a/relu 0=16 1=1 5=1 6=512 9=1
+Convolution              stage1_1/branch1b        1 1 stage1_1/branch1a_stage1_1/branch1a/relu stage1_1/branch1b_stage1_1/branch1b/relu 0=16 1=3 4=1 5=1 6=2304 9=1
+Convolution              stage1_1/branch2a        1 1 stem3_stem3/relu_splitncnn_1 stage1_1/branch2a_stage1_1/branch2a/relu 0=16 1=1 5=1 6=512 9=1
+Convolution              stage1_1/branch2b        1 1 stage1_1/branch2a_stage1_1/branch2a/relu stage1_1/branch2b_stage1_1/branch2b/relu 0=16 1=3 4=1 5=1 6=2304 9=1
+Convolution              stage1_1/branch2c        1 1 stage1_1/branch2b_stage1_1/branch2b/relu stage1_1/branch2c_stage1_1/branch2c/relu 0=16 1=3 4=1 5=1 6=2304 9=1
+Concat                   stage1_1/concat          3 1 stem3_stem3/relu_splitncnn_0 stage1_1/branch1b_stage1_1/branch1b/relu stage1_1/branch2c_stage1_1/branch2c/relu stage1_1/concat
+Split                    splitncnn_3              1 3 stage1_1/concat stage1_1/concat_splitncnn_0 stage1_1/concat_splitncnn_1 stage1_1/concat_splitncnn_2
+Convolution              stage1_2/branch1a        1 1 stage1_1/concat_splitncnn_2 stage1_2/branch1a_stage1_2/branch1a/relu 0=16 1=1 5=1 6=1024 9=1
+Convolution              stage1_2/branch1b        1 1 stage1_2/branch1a_stage1_2/branch1a/relu stage1_2/branch1b_stage1_2/branch1b/relu 0=16 1=3 4=1 5=1 6=2304 9=1
+Convolution              stage1_2/branch2a        1 1 stage1_1/concat_splitncnn_1 stage1_2/branch2a_stage1_2/branch2a/relu 0=16 1=1 5=1 6=1024 9=1
+Convolution              stage1_2/branch2b        1 1 stage1_2/branch2a_stage1_2/branch2a/relu stage1_2/branch2b_stage1_2/branch2b/relu 0=16 1=3 4=1 5=1 6=2304 9=1
+Convolution              stage1_2/branch2c        1 1 stage1_2/branch2b_stage1_2/branch2b/relu stage1_2/branch2c_stage1_2/branch2c/relu 0=16 1=3 4=1 5=1 6=2304 9=1
+Concat                   stage1_2/concat          3 1 stage1_1/concat_splitncnn_0 stage1_2/branch1b_stage1_2/branch1b/relu stage1_2/branch2c_stage1_2/branch2c/relu stage1_2/concat
+Split                    splitncnn_4              1 3 stage1_2/concat stage1_2/concat_splitncnn_0 stage1_2/concat_splitncnn_1 stage1_2/concat_splitncnn_2
+Convolution              stage1_3/branch1a        1 1 stage1_2/concat_splitncnn_2 stage1_3/branch1a_stage1_3/branch1a/relu 0=16 1=1 5=1 6=1536 9=1
+Convolution              stage1_3/branch1b        1 1 stage1_3/branch1a_stage1_3/branch1a/relu stage1_3/branch1b_stage1_3/branch1b/relu 0=16 1=3 4=1 5=1 6=2304 9=1
+Convolution              stage1_3/branch2a        1 1 stage1_2/concat_splitncnn_1 stage1_3/branch2a_stage1_3/branch2a/relu 0=16 1=1 5=1 6=1536 9=1
+Convolution              stage1_3/branch2b        1 1 stage1_3/branch2a_stage1_3/branch2a/relu stage1_3/branch2b_stage1_3/branch2b/relu 0=16 1=3 4=1 5=1 6=2304 9=1
+Convolution              stage1_3/branch2c        1 1 stage1_3/branch2b_stage1_3/branch2b/relu stage1_3/branch2c_stage1_3/branch2c/relu 0=16 1=3 4=1 5=1 6=2304 9=1
+Concat                   stage1_3/concat          3 1 stage1_2/concat_splitncnn_0 stage1_3/branch1b_stage1_3/branch1b/relu stage1_3/branch2c_stage1_3/branch2c/relu stage1_3/concat
+Convolution              stage1_tb                1 1 stage1_3/concat stage1_tb_stage1_tb/relu 0=128 1=1 5=1 6=16384 9=1
+Split                    splitncnn_5              1 2 stage1_tb_stage1_tb/relu stage1_tb_stage1_tb/relu_splitncnn_0 stage1_tb_stage1_tb/relu_splitncnn_1
+Pooling                  stage1_tb/pool           1 1 stage1_tb_stage1_tb/relu_splitncnn_1 stage1_tb/pool 0=1 1=2 2=2
+Split                    splitncnn_6              1 3 stage1_tb/pool stage1_tb/pool_splitncnn_0 stage1_tb/pool_splitncnn_1 stage1_tb/pool_splitncnn_2
+Convolution              stage2_1/branch1a        1 1 stage1_tb/pool_splitncnn_2 stage2_1/branch1a_stage2_1/branch1a/relu 0=32 1=1 5=1 6=4096 9=1
+Convolution              stage2_1/branch1b        1 1 stage2_1/branch1a_stage2_1/branch1a/relu stage2_1/branch1b_stage2_1/branch1b/relu 0=16 1=3 4=1 5=1 6=4608 9=1
+Convolution              stage2_1/branch2a        1 1 stage1_tb/pool_splitncnn_1 stage2_1/branch2a_stage2_1/branch2a/relu 0=32 1=1 5=1 6=4096 9=1
+Convolution              stage2_1/branch2b        1 1 stage2_1/branch2a_stage2_1/branch2a/relu stage2_1/branch2b_stage2_1/branch2b/relu 0=16 1=3 4=1 5=1 6=4608 9=1
+Convolution              stage2_1/branch2c        1 1 stage2_1/branch2b_stage2_1/branch2b/relu stage2_1/branch2c_stage2_1/branch2c/relu 0=16 1=3 4=1 5=1 6=2304 9=1
+Concat                   stage2_1/concat          3 1 stage1_tb/pool_splitncnn_0 stage2_1/branch1b_stage2_1/branch1b/relu stage2_1/branch2c_stage2_1/branch2c/relu stage2_1/concat
+Split                    splitncnn_7              1 3 stage2_1/concat stage2_1/concat_splitncnn_0 stage2_1/concat_splitncnn_1 stage2_1/concat_splitncnn_2
+Convolution              stage2_2/branch1a        1 1 stage2_1/concat_splitncnn_2 stage2_2/branch1a_stage2_2/branch1a/relu 0=32 1=1 5=1 6=5120 9=1
+Convolution              stage2_2/branch1b        1 1 stage2_2/branch1a_stage2_2/branch1a/relu stage2_2/branch1b_stage2_2/branch1b/relu 0=16 1=3 4=1 5=1 6=4608 9=1
+Convolution              stage2_2/branch2a        1 1 stage2_1/concat_splitncnn_1 stage2_2/branch2a_stage2_2/branch2a/relu 0=32 1=1 5=1 6=5120 9=1
+Convolution              stage2_2/branch2b        1 1 stage2_2/branch2a_stage2_2/branch2a/relu stage2_2/branch2b_stage2_2/branch2b/relu 0=16 1=3 4=1 5=1 6=4608 9=1
+Convolution              stage2_2/branch2c        1 1 stage2_2/branch2b_stage2_2/branch2b/relu stage2_2/branch2c_stage2_2/branch2c/relu 0=16 1=3 4=1 5=1 6=2304 9=1
+Concat                   stage2_2/concat          3 1 stage2_1/concat_splitncnn_0 stage2_2/branch1b_stage2_2/branch1b/relu stage2_2/branch2c_stage2_2/branch2c/relu stage2_2/concat
+Split                    splitncnn_8              1 3 stage2_2/concat stage2_2/concat_splitncnn_0 stage2_2/concat_splitncnn_1 stage2_2/concat_splitncnn_2
+Convolution              stage2_3/branch1a        1 1 stage2_2/concat_splitncnn_2 stage2_3/branch1a_stage2_3/branch1a/relu 0=32 1=1 5=1 6=6144 9=1
+Convolution              stage2_3/branch1b        1 1 stage2_3/branch1a_stage2_3/branch1a/relu stage2_3/branch1b_stage2_3/branch1b/relu 0=16 1=3 4=1 5=1 6=4608 9=1
+Convolution              stage2_3/branch2a        1 1 stage2_2/concat_splitncnn_1 stage2_3/branch2a_stage2_3/branch2a/relu 0=32 1=1 5=1 6=6144 9=1
+Convolution              stage2_3/branch2b        1 1 stage2_3/branch2a_stage2_3/branch2a/relu stage2_3/branch2b_stage2_3/branch2b/relu 0=16 1=3 4=1 5=1 6=4608 9=1
+Convolution              stage2_3/branch2c        1 1 stage2_3/branch2b_stage2_3/branch2b/relu stage2_3/branch2c_stage2_3/branch2c/relu 0=16 1=3 4=1 5=1 6=2304 9=1
+Concat                   stage2_3/concat          3 1 stage2_2/concat_splitncnn_0 stage2_3/branch1b_stage2_3/branch1b/relu stage2_3/branch2c_stage2_3/branch2c/relu stage2_3/concat
+Split                    splitncnn_9              1 3 stage2_3/concat stage2_3/concat_splitncnn_0 stage2_3/concat_splitncnn_1 stage2_3/concat_splitncnn_2
+Convolution              stage2_4/branch1a        1 1 stage2_3/concat_splitncnn_2 stage2_4/branch1a_stage2_4/branch1a/relu 0=32 1=1 5=1 6=7168 9=1
+Convolution              stage2_4/branch1b        1 1 stage2_4/branch1a_stage2_4/branch1a/relu stage2_4/branch1b_stage2_4/branch1b/relu 0=16 1=3 4=1 5=1 6=4608 9=1
+Convolution              stage2_4/branch2a        1 1 stage2_3/concat_splitncnn_1 stage2_4/branch2a_stage2_4/branch2a/relu 0=32 1=1 5=1 6=7168 9=1
+Convolution              stage2_4/branch2b        1 1 stage2_4/branch2a_stage2_4/branch2a/relu stage2_4/branch2b_stage2_4/branch2b/relu 0=16 1=3 4=1 5=1 6=4608 9=1
+Convolution              stage2_4/branch2c        1 1 stage2_4/branch2b_stage2_4/branch2b/relu stage2_4/branch2c_stage2_4/branch2c/relu 0=16 1=3 4=1 5=1 6=2304 9=1
+Concat                   stage2_4/concat          3 1 stage2_3/concat_splitncnn_0 stage2_4/branch1b_stage2_4/branch1b/relu stage2_4/branch2c_stage2_4/branch2c/relu stage2_4/concat
+Convolution              stage2_tb                1 1 stage2_4/concat stage2_tb_stage2_tb/relu 0=256 1=1 5=1 6=65536 9=1
+Pooling                  stage2_tb/pool           1 1 stage2_tb_stage2_tb/relu stage2_tb/pool 0=1 1=2 2=2
+Split                    splitncnn_10             1 3 stage2_tb/pool stage2_tb/pool_splitncnn_0 stage2_tb/pool_splitncnn_1 stage2_tb/pool_splitncnn_2
+Convolution              stage3_1/branch1a        1 1 stage2_tb/pool_splitncnn_2 stage3_1/branch1a_stage3_1/branch1a/relu 0=64 1=1 5=1 6=16384 9=1
+Convolution              stage3_1/branch1b        1 1 stage3_1/branch1a_stage3_1/branch1a/relu stage3_1/branch1b_stage3_1/branch1b/relu 0=16 1=3 4=1 5=1 6=9216 9=1
+Convolution              stage3_1/branch2a        1 1 stage2_tb/pool_splitncnn_1 stage3_1/branch2a_stage3_1/branch2a/relu 0=64 1=1 5=1 6=16384 9=1
+Convolution              stage3_1/branch2b        1 1 stage3_1/branch2a_stage3_1/branch2a/relu stage3_1/branch2b_stage3_1/branch2b/relu 0=16 1=3 4=1 5=1 6=9216 9=1
+Convolution              stage3_1/branch2c        1 1 stage3_1/branch2b_stage3_1/branch2b/relu stage3_1/branch2c_stage3_1/branch2c/relu 0=16 1=3 4=1 5=1 6=2304 9=1
+Concat                   stage3_1/concat          3 1 stage2_tb/pool_splitncnn_0 stage3_1/branch1b_stage3_1/branch1b/relu stage3_1/branch2c_stage3_1/branch2c/relu stage3_1/concat
+Split                    splitncnn_11             1 3 stage3_1/concat stage3_1/concat_splitncnn_0 stage3_1/concat_splitncnn_1 stage3_1/concat_splitncnn_2
+Convolution              stage3_2/branch1a        1 1 stage3_1/concat_splitncnn_2 stage3_2/branch1a_stage3_2/branch1a/relu 0=64 1=1 5=1 6=18432 9=1
+Convolution              stage3_2/branch1b        1 1 stage3_2/branch1a_stage3_2/branch1a/relu stage3_2/branch1b_stage3_2/branch1b/relu 0=16 1=3 4=1 5=1 6=9216 9=1
+Convolution              stage3_2/branch2a        1 1 stage3_1/concat_splitncnn_1 stage3_2/branch2a_stage3_2/branch2a/relu 0=64 1=1 5=1 6=18432 9=1
+Convolution              stage3_2/branch2b        1 1 stage3_2/branch2a_stage3_2/branch2a/relu stage3_2/branch2b_stage3_2/branch2b/relu 0=16 1=3 4=1 5=1 6=9216 9=1
+Convolution              stage3_2/branch2c        1 1 stage3_2/branch2b_stage3_2/branch2b/relu stage3_2/branch2c_stage3_2/branch2c/relu 0=16 1=3 4=1 5=1 6=2304 9=1
+Concat                   stage3_2/concat          3 1 stage3_1/concat_splitncnn_0 stage3_2/branch1b_stage3_2/branch1b/relu stage3_2/branch2c_stage3_2/branch2c/relu stage3_2/concat
+Split                    splitncnn_12             1 3 stage3_2/concat stage3_2/concat_splitncnn_0 stage3_2/concat_splitncnn_1 stage3_2/concat_splitncnn_2
+Convolution              stage3_3/branch1a        1 1 stage3_2/concat_splitncnn_2 stage3_3/branch1a_stage3_3/branch1a/relu 0=64 1=1 5=1 6=20480 9=1
+Convolution              stage3_3/branch1b        1 1 stage3_3/branch1a_stage3_3/branch1a/relu stage3_3/branch1b_stage3_3/branch1b/relu 0=16 1=3 4=1 5=1 6=9216 9=1
+Convolution              stage3_3/branch2a        1 1 stage3_2/concat_splitncnn_1 stage3_3/branch2a_stage3_3/branch2a/relu 0=64 1=1 5=1 6=20480 9=1
+Convolution              stage3_3/branch2b        1 1 stage3_3/branch2a_stage3_3/branch2a/relu stage3_3/branch2b_stage3_3/branch2b/relu 0=16 1=3 4=1 5=1 6=9216 9=1
+Convolution              stage3_3/branch2c        1 1 stage3_3/branch2b_stage3_3/branch2b/relu stage3_3/branch2c_stage3_3/branch2c/relu 0=16 1=3 4=1 5=1 6=2304 9=1
+Concat                   stage3_3/concat          3 1 stage3_2/concat_splitncnn_0 stage3_3/branch1b_stage3_3/branch1b/relu stage3_3/branch2c_stage3_3/branch2c/relu stage3_3/concat
+Split                    splitncnn_13             1 3 stage3_3/concat stage3_3/concat_splitncnn_0 stage3_3/concat_splitncnn_1 stage3_3/concat_splitncnn_2
+Convolution              stage3_4/branch1a        1 1 stage3_3/concat_splitncnn_2 stage3_4/branch1a_stage3_4/branch1a/relu 0=64 1=1 5=1 6=22528 9=1
+Convolution              stage3_4/branch1b        1 1 stage3_4/branch1a_stage3_4/branch1a/relu stage3_4/branch1b_stage3_4/branch1b/relu 0=16 1=3 4=1 5=1 6=9216 9=1
+Convolution              stage3_4/branch2a        1 1 stage3_3/concat_splitncnn_1 stage3_4/branch2a_stage3_4/branch2a/relu 0=64 1=1 5=1 6=22528 9=1
+Convolution              stage3_4/branch2b        1 1 stage3_4/branch2a_stage3_4/branch2a/relu stage3_4/branch2b_stage3_4/branch2b/relu 0=16 1=3 4=1 5=1 6=9216 9=1
+Convolution              stage3_4/branch2c        1 1 stage3_4/branch2b_stage3_4/branch2b/relu stage3_4/branch2c_stage3_4/branch2c/relu 0=16 1=3 4=1 5=1 6=2304 9=1
+Concat                   stage3_4/concat          3 1 stage3_3/concat_splitncnn_0 stage3_4/branch1b_stage3_4/branch1b/relu stage3_4/branch2c_stage3_4/branch2c/relu stage3_4/concat
+Split                    splitncnn_14             1 3 stage3_4/concat stage3_4/concat_splitncnn_0 stage3_4/concat_splitncnn_1 stage3_4/concat_splitncnn_2
+Convolution              stage3_5/branch1a        1 1 stage3_4/concat_splitncnn_2 stage3_5/branch1a_stage3_5/branch1a/relu 0=64 1=1 5=1 6=24576 9=1
+Convolution              stage3_5/branch1b        1 1 stage3_5/branch1a_stage3_5/branch1a/relu stage3_5/branch1b_stage3_5/branch1b/relu 0=16 1=3 4=1 5=1 6=9216 9=1
+Convolution              stage3_5/branch2a        1 1 stage3_4/concat_splitncnn_1 stage3_5/branch2a_stage3_5/branch2a/relu 0=64 1=1 5=1 6=24576 9=1
+Convolution              stage3_5/branch2b        1 1 stage3_5/branch2a_stage3_5/branch2a/relu stage3_5/branch2b_stage3_5/branch2b/relu 0=16 1=3 4=1 5=1 6=9216 9=1
+Convolution              stage3_5/branch2c        1 1 stage3_5/branch2b_stage3_5/branch2b/relu stage3_5/branch2c_stage3_5/branch2c/relu 0=16 1=3 4=1 5=1 6=2304 9=1
+Concat                   stage3_5/concat          3 1 stage3_4/concat_splitncnn_0 stage3_5/branch1b_stage3_5/branch1b/relu stage3_5/branch2c_stage3_5/branch2c/relu stage3_5/concat
+Split                    splitncnn_15             1 3 stage3_5/concat stage3_5/concat_splitncnn_0 stage3_5/concat_splitncnn_1 stage3_5/concat_splitncnn_2
+Convolution              stage3_6/branch1a        1 1 stage3_5/concat_splitncnn_2 stage3_6/branch1a_stage3_6/branch1a/relu 0=64 1=1 5=1 6=26624 9=1
+Convolution              stage3_6/branch1b        1 1 stage3_6/branch1a_stage3_6/branch1a/relu stage3_6/branch1b_stage3_6/branch1b/relu 0=16 1=3 4=1 5=1 6=9216 9=1
+Convolution              stage3_6/branch2a        1 1 stage3_5/concat_splitncnn_1 stage3_6/branch2a_stage3_6/branch2a/relu 0=64 1=1 5=1 6=26624 9=1
+Convolution              stage3_6/branch2b        1 1 stage3_6/branch2a_stage3_6/branch2a/relu stage3_6/branch2b_stage3_6/branch2b/relu 0=16 1=3 4=1 5=1 6=9216 9=1
+Convolution              stage3_6/branch2c        1 1 stage3_6/branch2b_stage3_6/branch2b/relu stage3_6/branch2c_stage3_6/branch2c/relu 0=16 1=3 4=1 5=1 6=2304 9=1
+Concat                   stage3_6/concat          3 1 stage3_5/concat_splitncnn_0 stage3_6/branch1b_stage3_6/branch1b/relu stage3_6/branch2c_stage3_6/branch2c/relu stage3_6/concat
+Split                    splitncnn_16             1 3 stage3_6/concat stage3_6/concat_splitncnn_0 stage3_6/concat_splitncnn_1 stage3_6/concat_splitncnn_2
+Convolution              stage3_7/branch1a        1 1 stage3_6/concat_splitncnn_2 stage3_7/branch1a_stage3_7/branch1a/relu 0=64 1=1 5=1 6=28672 9=1
+Convolution              stage3_7/branch1b        1 1 stage3_7/branch1a_stage3_7/branch1a/relu stage3_7/branch1b_stage3_7/branch1b/relu 0=16 1=3 4=1 5=1 6=9216 9=1
+Convolution              stage3_7/branch2a        1 1 stage3_6/concat_splitncnn_1 stage3_7/branch2a_stage3_7/branch2a/relu 0=64 1=1 5=1 6=28672 9=1
+Convolution              stage3_7/branch2b        1 1 stage3_7/branch2a_stage3_7/branch2a/relu stage3_7/branch2b_stage3_7/branch2b/relu 0=16 1=3 4=1 5=1 6=9216 9=1
+Convolution              stage3_7/branch2c        1 1 stage3_7/branch2b_stage3_7/branch2b/relu stage3_7/branch2c_stage3_7/branch2c/relu 0=16 1=3 4=1 5=1 6=2304 9=1
+Concat                   stage3_7/concat          3 1 stage3_6/concat_splitncnn_0 stage3_7/branch1b_stage3_7/branch1b/relu stage3_7/branch2c_stage3_7/branch2c/relu stage3_7/concat
+Split                    splitncnn_17             1 3 stage3_7/concat stage3_7/concat_splitncnn_0 stage3_7/concat_splitncnn_1 stage3_7/concat_splitncnn_2
+Convolution              stage3_8/branch1a        1 1 stage3_7/concat_splitncnn_2 stage3_8/branch1a_stage3_8/branch1a/relu 0=64 1=1 5=1 6=30720 9=1
+Convolution              stage3_8/branch1b        1 1 stage3_8/branch1a_stage3_8/branch1a/relu stage3_8/branch1b_stage3_8/branch1b/relu 0=16 1=3 4=1 5=1 6=9216 9=1
+Convolution              stage3_8/branch2a        1 1 stage3_7/concat_splitncnn_1 stage3_8/branch2a_stage3_8/branch2a/relu 0=64 1=1 5=1 6=30720 9=1
+Convolution              stage3_8/branch2b        1 1 stage3_8/branch2a_stage3_8/branch2a/relu stage3_8/branch2b_stage3_8/branch2b/relu 0=16 1=3 4=1 5=1 6=9216 9=1
+Convolution              stage3_8/branch2c        1 1 stage3_8/branch2b_stage3_8/branch2b/relu stage3_8/branch2c_stage3_8/branch2c/relu 0=16 1=3 4=1 5=1 6=2304 9=1
+Concat                   stage3_8/concat          3 1 stage3_7/concat_splitncnn_0 stage3_8/branch1b_stage3_8/branch1b/relu stage3_8/branch2c_stage3_8/branch2c/relu stage3_8/concat
+Convolution              stage3_tb                1 1 stage3_8/concat stage3_tb_stage3_tb/relu 0=512 1=1 5=1 6=262144 9=1
+Split                    splitncnn_18             1 3 stage3_tb_stage3_tb/relu stage3_tb_stage3_tb/relu_splitncnn_0 stage3_tb_stage3_tb/relu_splitncnn_1 stage3_tb_stage3_tb/relu_splitncnn_2
+Pooling                  stage3_tb/pool           1 1 stage3_tb_stage3_tb/relu_splitncnn_2 stage3_tb/pool 0=1 1=2 2=2
+Split                    splitncnn_19             1 3 stage3_tb/pool stage3_tb/pool_splitncnn_0 stage3_tb/pool_splitncnn_1 stage3_tb/pool_splitncnn_2
+Convolution              stage4_1/branch1a        1 1 stage3_tb/pool_splitncnn_2 stage4_1/branch1a_stage4_1/branch1a/relu 0=64 1=1 5=1 6=32768 9=1
+Convolution              stage4_1/branch1b        1 1 stage4_1/branch1a_stage4_1/branch1a/relu stage4_1/branch1b_stage4_1/branch1b/relu 0=16 1=3 4=1 5=1 6=9216 9=1
+Convolution              stage4_1/branch2a        1 1 stage3_tb/pool_splitncnn_1 stage4_1/branch2a_stage4_1/branch2a/relu 0=64 1=1 5=1 6=32768 9=1
+Convolution              stage4_1/branch2b        1 1 stage4_1/branch2a_stage4_1/branch2a/relu stage4_1/branch2b_stage4_1/branch2b/relu 0=16 1=3 4=1 5=1 6=9216 9=1
+Convolution              stage4_1/branch2c        1 1 stage4_1/branch2b_stage4_1/branch2b/relu stage4_1/branch2c_stage4_1/branch2c/relu 0=16 1=3 4=1 5=1 6=2304 9=1
+Concat                   stage4_1/concat          3 1 stage3_tb/pool_splitncnn_0 stage4_1/branch1b_stage4_1/branch1b/relu stage4_1/branch2c_stage4_1/branch2c/relu stage4_1/concat
+Split                    splitncnn_20             1 3 stage4_1/concat stage4_1/concat_splitncnn_0 stage4_1/concat_splitncnn_1 stage4_1/concat_splitncnn_2
+Convolution              stage4_2/branch1a        1 1 stage4_1/concat_splitncnn_2 stage4_2/branch1a_stage4_2/branch1a/relu 0=64 1=1 5=1 6=34816 9=1
+Convolution              stage4_2/branch1b        1 1 stage4_2/branch1a_stage4_2/branch1a/relu stage4_2/branch1b_stage4_2/branch1b/relu 0=16 1=3 4=1 5=1 6=9216 9=1
+Convolution              stage4_2/branch2a        1 1 stage4_1/concat_splitncnn_1 stage4_2/branch2a_stage4_2/branch2a/relu 0=64 1=1 5=1 6=34816 9=1
+Convolution              stage4_2/branch2b        1 1 stage4_2/branch2a_stage4_2/branch2a/relu stage4_2/branch2b_stage4_2/branch2b/relu 0=16 1=3 4=1 5=1 6=9216 9=1
+Convolution              stage4_2/branch2c        1 1 stage4_2/branch2b_stage4_2/branch2b/relu stage4_2/branch2c_stage4_2/branch2c/relu 0=16 1=3 4=1 5=1 6=2304 9=1
+Concat                   stage4_2/concat          3 1 stage4_1/concat_splitncnn_0 stage4_2/branch1b_stage4_2/branch1b/relu stage4_2/branch2c_stage4_2/branch2c/relu stage4_2/concat
+Split                    splitncnn_21             1 3 stage4_2/concat stage4_2/concat_splitncnn_0 stage4_2/concat_splitncnn_1 stage4_2/concat_splitncnn_2
+Convolution              stage4_3/branch1a        1 1 stage4_2/concat_splitncnn_2 stage4_3/branch1a_stage4_3/branch1a/relu 0=64 1=1 5=1 6=36864 9=1
+Convolution              stage4_3/branch1b        1 1 stage4_3/branch1a_stage4_3/branch1a/relu stage4_3/branch1b_stage4_3/branch1b/relu 0=16 1=3 4=1 5=1 6=9216 9=1
+Convolution              stage4_3/branch2a        1 1 stage4_2/concat_splitncnn_1 stage4_3/branch2a_stage4_3/branch2a/relu 0=64 1=1 5=1 6=36864 9=1
+Convolution              stage4_3/branch2b        1 1 stage4_3/branch2a_stage4_3/branch2a/relu stage4_3/branch2b_stage4_3/branch2b/relu 0=16 1=3 4=1 5=1 6=9216 9=1
+Convolution              stage4_3/branch2c        1 1 stage4_3/branch2b_stage4_3/branch2b/relu stage4_3/branch2c_stage4_3/branch2c/relu 0=16 1=3 4=1 5=1 6=2304 9=1
+Concat                   stage4_3/concat          3 1 stage4_2/concat_splitncnn_0 stage4_3/branch1b_stage4_3/branch1b/relu stage4_3/branch2c_stage4_3/branch2c/relu stage4_3/concat
+Split                    splitncnn_22             1 3 stage4_3/concat stage4_3/concat_splitncnn_0 stage4_3/concat_splitncnn_1 stage4_3/concat_splitncnn_2
+Convolution              stage4_4/branch1a        1 1 stage4_3/concat_splitncnn_2 stage4_4/branch1a_stage4_4/branch1a/relu 0=64 1=1 5=1 6=38912 9=1
+Convolution              stage4_4/branch1b        1 1 stage4_4/branch1a_stage4_4/branch1a/relu stage4_4/branch1b_stage4_4/branch1b/relu 0=16 1=3 4=1 5=1 6=9216 9=1
+Convolution              stage4_4/branch2a        1 1 stage4_3/concat_splitncnn_1 stage4_4/branch2a_stage4_4/branch2a/relu 0=64 1=1 5=1 6=38912 9=1
+Convolution              stage4_4/branch2b        1 1 stage4_4/branch2a_stage4_4/branch2a/relu stage4_4/branch2b_stage4_4/branch2b/relu 0=16 1=3 4=1 5=1 6=9216 9=1
+Convolution              stage4_4/branch2c        1 1 stage4_4/branch2b_stage4_4/branch2b/relu stage4_4/branch2c_stage4_4/branch2c/relu 0=16 1=3 4=1 5=1 6=2304 9=1
+Concat                   stage4_4/concat          3 1 stage4_3/concat_splitncnn_0 stage4_4/branch1b_stage4_4/branch1b/relu stage4_4/branch2c_stage4_4/branch2c/relu stage4_4/concat
+Split                    splitncnn_23             1 3 stage4_4/concat stage4_4/concat_splitncnn_0 stage4_4/concat_splitncnn_1 stage4_4/concat_splitncnn_2
+Convolution              stage4_5/branch1a        1 1 stage4_4/concat_splitncnn_2 stage4_5/branch1a_stage4_5/branch1a/relu 0=64 1=1 5=1 6=40960 9=1
+Convolution              stage4_5/branch1b        1 1 stage4_5/branch1a_stage4_5/branch1a/relu stage4_5/branch1b_stage4_5/branch1b/relu 0=16 1=3 4=1 5=1 6=9216 9=1
+Convolution              stage4_5/branch2a        1 1 stage4_4/concat_splitncnn_1 stage4_5/branch2a_stage4_5/branch2a/relu 0=64 1=1 5=1 6=40960 9=1
+Convolution              stage4_5/branch2b        1 1 stage4_5/branch2a_stage4_5/branch2a/relu stage4_5/branch2b_stage4_5/branch2b/relu 0=16 1=3 4=1 5=1 6=9216 9=1
+Convolution              stage4_5/branch2c        1 1 stage4_5/branch2b_stage4_5/branch2b/relu stage4_5/branch2c_stage4_5/branch2c/relu 0=16 1=3 4=1 5=1 6=2304 9=1
+Concat                   stage4_5/concat          3 1 stage4_4/concat_splitncnn_0 stage4_5/branch1b_stage4_5/branch1b/relu stage4_5/branch2c_stage4_5/branch2c/relu stage4_5/concat
+Split                    splitncnn_24             1 3 stage4_5/concat stage4_5/concat_splitncnn_0 stage4_5/concat_splitncnn_1 stage4_5/concat_splitncnn_2
+Convolution              stage4_6/branch1a        1 1 stage4_5/concat_splitncnn_2 stage4_6/branch1a_stage4_6/branch1a/relu 0=64 1=1 5=1 6=43008 9=1
+Convolution              stage4_6/branch1b        1 1 stage4_6/branch1a_stage4_6/branch1a/relu stage4_6/branch1b_stage4_6/branch1b/relu 0=16 1=3 4=1 5=1 6=9216 9=1
+Convolution              stage4_6/branch2a        1 1 stage4_5/concat_splitncnn_1 stage4_6/branch2a_stage4_6/branch2a/relu 0=64 1=1 5=1 6=43008 9=1
+Convolution              stage4_6/branch2b        1 1 stage4_6/branch2a_stage4_6/branch2a/relu stage4_6/branch2b_stage4_6/branch2b/relu 0=16 1=3 4=1 5=1 6=9216 9=1
+Convolution              stage4_6/branch2c        1 1 stage4_6/branch2b_stage4_6/branch2b/relu stage4_6/branch2c_stage4_6/branch2c/relu 0=16 1=3 4=1 5=1 6=2304 9=1
+Concat                   stage4_6/concat          3 1 stage4_5/concat_splitncnn_0 stage4_6/branch1b_stage4_6/branch1b/relu stage4_6/branch2c_stage4_6/branch2c/relu stage4_6/concat
+Convolution              stage4_tb                1 1 stage4_6/concat stage4_tb_stage4_tb/relu 0=704 1=1 5=1 6=495616 9=1
+Split                    splitncnn_25             1 3 stage4_tb_stage4_tb/relu stage4_tb_stage4_tb/relu_splitncnn_0 stage4_tb_stage4_tb/relu_splitncnn_1 stage4_tb_stage4_tb/relu_splitncnn_2
+Convolution              stage4_tb/relu/ext1/fe1_1 1 1 stage4_tb_stage4_tb/relu_splitncnn_2 stage4_tb/relu/ext1/fe1_1_stage4_tb/relu/ext1/fe1_1/relu 0=256 1=1 5=1 6=180224 9=1
+Convolution              ext1/fe1_2               1 1 stage4_tb/relu/ext1/fe1_1_stage4_tb/relu/ext1/fe1_1/relu ext1/fe1_2_ext1/fe1_2/relu 0=256 1=3 3=2 4=1 5=1 6=589824 9=1
+Split                    splitncnn_26             1 3 ext1/fe1_2_ext1/fe1_2/relu ext1/fe1_2_ext1/fe1_2/relu_splitncnn_0 ext1/fe1_2_ext1/fe1_2/relu_splitncnn_1 ext1/fe1_2_ext1/fe1_2/relu_splitncnn_2
+Convolution              ext1/fe2_1               1 1 ext1/fe1_2_ext1/fe1_2/relu_splitncnn_2 ext1/fe2_1_ext1/fe2_1/relu 0=128 1=1 5=1 6=32768 9=1
+Convolution              ext1/fe2_2               1 1 ext1/fe2_1_ext1/fe2_1/relu ext1/fe2_2_ext1/fe2_2/relu 0=256 1=3 5=1 6=294912 9=1
+Split                    splitncnn_27             1 3 ext1/fe2_2_ext1/fe2_2/relu ext1/fe2_2_ext1/fe2_2/relu_splitncnn_0 ext1/fe2_2_ext1/fe2_2/relu_splitncnn_1 ext1/fe2_2_ext1/fe2_2/relu_splitncnn_2
+Convolution              ext1/fe3_1               1 1 ext1/fe2_2_ext1/fe2_2/relu_splitncnn_2 ext1/fe3_1_ext1/fe3_1/relu 0=128 1=1 5=1 6=32768 9=1
+Convolution              ext1/fe3_2               1 1 ext1/fe3_1_ext1/fe3_1/relu ext1/fe3_2_ext1/fe3_2/relu 0=256 1=3 5=1 6=294912 9=1
+Split                    splitncnn_28             1 2 ext1/fe3_2_ext1/fe3_2/relu ext1/fe3_2_ext1/fe3_2/relu_splitncnn_0 ext1/fe3_2_ext1/fe3_2/relu_splitncnn_1
+Convolution              stage4_tb/ext/pm2        1 1 stage3_tb_stage3_tb/relu_splitncnn_1 stage4_tb/ext/pm2 0=256 1=1 5=1 6=131072
+Convolution              stage4_tb/ext/pm2/b2a    1 1 stage3_tb_stage3_tb/relu_splitncnn_0 stage4_tb/ext/pm2/b2a_stage4_tb/ext/pm2/b2a/relu 0=128 1=1 5=1 6=65536 9=1
+Convolution              stage4_tb/ext/pm2/b2b    1 1 stage4_tb/ext/pm2/b2a_stage4_tb/ext/pm2/b2a/relu stage4_tb/ext/pm2/b2b_stage4_tb/ext/pm2/b2b/relu 0=128 1=3 4=1 5=1 6=147456 9=1
+Convolution              stage4_tb/ext/pm2/b2c    1 1 stage4_tb/ext/pm2/b2b_stage4_tb/ext/pm2/b2b/relu stage4_tb/ext/pm2/b2c 0=256 1=1 5=1 6=32768
+Eltwise                  stage4_tb/ext/pm2/res    2 1 stage4_tb/ext/pm2 stage4_tb/ext/pm2/b2c stage4_tb/ext/pm2/res 0=1
+ReLU                     stage4_tb/ext/pm2/res/relu 1 1 stage4_tb/ext/pm2/res stage4_tb/ext/pm2/res_stage4_tb/ext/pm2/res/relu
+Split                    splitncnn_29             1 7 stage4_tb/ext/pm2/res_stage4_tb/ext/pm2/res/relu stage4_tb/ext/pm2/res_stage4_tb/ext/pm2/res/relu_splitncnn_0 stage4_tb/ext/pm2/res_stage4_tb/ext/pm2/res/relu_splitncnn_1 stage4_tb/ext/pm2/res_stage4_tb/ext/pm2/res/relu_splitncnn_2 stage4_tb/ext/pm2/res_stage4_tb/ext/pm2/res/relu_splitncnn_3 stage4_tb/ext/pm2/res_stage4_tb/ext/pm2/res/relu_splitncnn_4 stage4_tb/ext/pm2/res_stage4_tb/ext/pm2/res/relu_splitncnn_5 stage4_tb/ext/pm2/res_stage4_tb/ext/pm2/res/relu_splitncnn_6
+Convolution              stage4_tb/ext/pm3        1 1 stage4_tb_stage4_tb/relu_splitncnn_1 stage4_tb/ext/pm3 0=256 1=1 5=1 6=180224
+Convolution              stage4_tb/ext/pm3/b2a    1 1 stage4_tb_stage4_tb/relu_splitncnn_0 stage4_tb/ext/pm3/b2a_stage4_tb/ext/pm3/b2a/relu 0=128 1=1 5=1 6=90112 9=1
+Convolution              stage4_tb/ext/pm3/b2b    1 1 stage4_tb/ext/pm3/b2a_stage4_tb/ext/pm3/b2a/relu stage4_tb/ext/pm3/b2b_stage4_tb/ext/pm3/b2b/relu 0=128 1=3 4=1 5=1 6=147456 9=1
+Convolution              stage4_tb/ext/pm3/b2c    1 1 stage4_tb/ext/pm3/b2b_stage4_tb/ext/pm3/b2b/relu stage4_tb/ext/pm3/b2c 0=256 1=1 5=1 6=32768
+Eltwise                  stage4_tb/ext/pm3/res    2 1 stage4_tb/ext/pm3 stage4_tb/ext/pm3/b2c stage4_tb/ext/pm3/res 0=1
+ReLU                     stage4_tb/ext/pm3/res/relu 1 1 stage4_tb/ext/pm3/res stage4_tb/ext/pm3/res_stage4_tb/ext/pm3/res/relu
+Split                    splitncnn_30             1 3 stage4_tb/ext/pm3/res_stage4_tb/ext/pm3/res/relu stage4_tb/ext/pm3/res_stage4_tb/ext/pm3/res/relu_splitncnn_0 stage4_tb/ext/pm3/res_stage4_tb/ext/pm3/res/relu_splitncnn_1 stage4_tb/ext/pm3/res_stage4_tb/ext/pm3/res/relu_splitncnn_2
+Convolution              stage4_tb/ext/pm4        1 1 ext1/fe1_2_ext1/fe1_2/relu_splitncnn_1 stage4_tb/ext/pm4 0=256 1=1 5=1 6=65536
+Convolution              stage4_tb/ext/pm4/b2a    1 1 ext1/fe1_2_ext1/fe1_2/relu_splitncnn_0 stage4_tb/ext/pm4/b2a_stage4_tb/ext/pm4/b2a/relu 0=128 1=1 5=1 6=32768 9=1
+Convolution              stage4_tb/ext/pm4/b2b    1 1 stage4_tb/ext/pm4/b2a_stage4_tb/ext/pm4/b2a/relu stage4_tb/ext/pm4/b2b_stage4_tb/ext/pm4/b2b/relu 0=128 1=3 4=1 5=1 6=147456 9=1
+Convolution              stage4_tb/ext/pm4/b2c    1 1 stage4_tb/ext/pm4/b2b_stage4_tb/ext/pm4/b2b/relu stage4_tb/ext/pm4/b2c 0=256 1=1 5=1 6=32768
+Eltwise                  stage4_tb/ext/pm4/res    2 1 stage4_tb/ext/pm4 stage4_tb/ext/pm4/b2c stage4_tb/ext/pm4/res 0=1
+ReLU                     stage4_tb/ext/pm4/res/relu 1 1 stage4_tb/ext/pm4/res stage4_tb/ext/pm4/res_stage4_tb/ext/pm4/res/relu
+Split                    splitncnn_31             1 3 stage4_tb/ext/pm4/res_stage4_tb/ext/pm4/res/relu stage4_tb/ext/pm4/res_stage4_tb/ext/pm4/res/relu_splitncnn_0 stage4_tb/ext/pm4/res_stage4_tb/ext/pm4/res/relu_splitncnn_1 stage4_tb/ext/pm4/res_stage4_tb/ext/pm4/res/relu_splitncnn_2
+Convolution              stage4_tb/ext/pm5        1 1 ext1/fe2_2_ext1/fe2_2/relu_splitncnn_1 stage4_tb/ext/pm5 0=256 1=1 5=1 6=65536
+Convolution              stage4_tb/ext/pm5/b2a    1 1 ext1/fe2_2_ext1/fe2_2/relu_splitncnn_0 stage4_tb/ext/pm5/b2a_stage4_tb/ext/pm5/b2a/relu 0=128 1=1 5=1 6=32768 9=1
+Convolution              stage4_tb/ext/pm5/b2b    1 1 stage4_tb/ext/pm5/b2a_stage4_tb/ext/pm5/b2a/relu stage4_tb/ext/pm5/b2b_stage4_tb/ext/pm5/b2b/relu 0=128 1=3 4=1 5=1 6=147456 9=1
+Convolution              stage4_tb/ext/pm5/b2c    1 1 stage4_tb/ext/pm5/b2b_stage4_tb/ext/pm5/b2b/relu stage4_tb/ext/pm5/b2c 0=256 1=1 5=1 6=32768
+Eltwise                  stage4_tb/ext/pm5/res    2 1 stage4_tb/ext/pm5 stage4_tb/ext/pm5/b2c stage4_tb/ext/pm5/res 0=1
+ReLU                     stage4_tb/ext/pm5/res/relu 1 1 stage4_tb/ext/pm5/res stage4_tb/ext/pm5/res_stage4_tb/ext/pm5/res/relu
+Split                    splitncnn_32             1 3 stage4_tb/ext/pm5/res_stage4_tb/ext/pm5/res/relu stage4_tb/ext/pm5/res_stage4_tb/ext/pm5/res/relu_splitncnn_0 stage4_tb/ext/pm5/res_stage4_tb/ext/pm5/res/relu_splitncnn_1 stage4_tb/ext/pm5/res_stage4_tb/ext/pm5/res/relu_splitncnn_2
+Convolution              stage4_tb/ext/pm6        1 1 ext1/fe3_2_ext1/fe3_2/relu_splitncnn_1 stage4_tb/ext/pm6 0=256 1=1 5=1 6=65536
+Convolution              stage4_tb/ext/pm6/b2a    1 1 ext1/fe3_2_ext1/fe3_2/relu_splitncnn_0 stage4_tb/ext/pm6/b2a_stage4_tb/ext/pm6/b2a/relu 0=128 1=1 5=1 6=32768 9=1
+Convolution              stage4_tb/ext/pm6/b2b    1 1 stage4_tb/ext/pm6/b2a_stage4_tb/ext/pm6/b2a/relu stage4_tb/ext/pm6/b2b_stage4_tb/ext/pm6/b2b/relu 0=128 1=3 4=1 5=1 6=147456 9=1
+Convolution              stage4_tb/ext/pm6/b2c    1 1 stage4_tb/ext/pm6/b2b_stage4_tb/ext/pm6/b2b/relu stage4_tb/ext/pm6/b2c 0=256 1=1 5=1 6=32768
+Eltwise                  stage4_tb/ext/pm6/res    2 1 stage4_tb/ext/pm6 stage4_tb/ext/pm6/b2c stage4_tb/ext/pm6/res 0=1
+ReLU                     stage4_tb/ext/pm6/res/relu 1 1 stage4_tb/ext/pm6/res stage4_tb/ext/pm6/res_stage4_tb/ext/pm6/res/relu
+Split                    splitncnn_33             1 3 stage4_tb/ext/pm6/res_stage4_tb/ext/pm6/res/relu stage4_tb/ext/pm6/res_stage4_tb/ext/pm6/res/relu_splitncnn_0 stage4_tb/ext/pm6/res_stage4_tb/ext/pm6/res/relu_splitncnn_1 stage4_tb/ext/pm6/res_stage4_tb/ext/pm6/res/relu_splitncnn_2
+Convolution              ext/pm1_mbox_loc         1 1 stage4_tb/ext/pm2/res_stage4_tb/ext/pm2/res/relu_splitncnn_6 ext/pm1_mbox_loc 0=24 1=1 5=1 6=6144
+Permute                  ext/pm1_mbox_loc_perm    1 1 ext/pm1_mbox_loc ext/pm1_mbox_loc_perm 0=3
+Flatten                  ext/pm1_mbox_loc_flat    1 1 ext/pm1_mbox_loc_perm ext/pm1_mbox_loc_flat
+Convolution              ext/pm1_mbox_conf        1 1 stage4_tb/ext/pm2/res_stage4_tb/ext/pm2/res/relu_splitncnn_5 ext/pm1_mbox_conf 0=66 1=1 5=1 6=16896
+Permute                  ext/pm1_mbox_conf_perm   1 1 ext/pm1_mbox_conf ext/pm1_mbox_conf_perm 0=3
+Flatten                  ext/pm1_mbox_conf_flat   1 1 ext/pm1_mbox_conf_perm ext/pm1_mbox_conf_flat
+PriorBox                 ext/pm1_mbox_priorbox    2 1 stage4_tb/ext/pm2/res_stage4_tb/ext/pm2/res/relu_splitncnn_4 data_splitncnn_5 ext/pm1_mbox_priorbox -23300=1,3.040000e+01 -23301=1,6.080000e+01 -23302=2,2.000000e+00,3.000000e+00 9=-233 10=-233 13=5.000000e-01
+Convolution              ext/pm2_mbox_loc         1 1 stage4_tb/ext/pm2/res_stage4_tb/ext/pm2/res/relu_splitncnn_3 ext/pm2_mbox_loc 0=24 1=1 5=1 6=6144
+Permute                  ext/pm2_mbox_loc_perm    1 1 ext/pm2_mbox_loc ext/pm2_mbox_loc_perm 0=3
+Flatten                  ext/pm2_mbox_loc_flat    1 1 ext/pm2_mbox_loc_perm ext/pm2_mbox_loc_flat
+Convolution              ext/pm2_mbox_conf        1 1 stage4_tb/ext/pm2/res_stage4_tb/ext/pm2/res/relu_splitncnn_2 ext/pm2_mbox_conf 0=66 1=1 5=1 6=16896
+Permute                  ext/pm2_mbox_conf_perm   1 1 ext/pm2_mbox_conf ext/pm2_mbox_conf_perm 0=3
+Flatten                  ext/pm2_mbox_conf_flat   1 1 ext/pm2_mbox_conf_perm ext/pm2_mbox_conf_flat
+PriorBox                 ext/pm2_mbox_priorbox    2 1 stage4_tb/ext/pm2/res_stage4_tb/ext/pm2/res/relu_splitncnn_1 data_splitncnn_4 ext/pm2_mbox_priorbox -23300=1,6.080000e+01 -23301=1,1.124800e+02 -23302=2,2.000000e+00,3.000000e+00 9=-233 10=-233 13=5.000000e-01
+Convolution              ext/pm3_mbox_loc         1 1 stage4_tb/ext/pm3/res_stage4_tb/ext/pm3/res/relu_splitncnn_2 ext/pm3_mbox_loc 0=24 1=1 5=1 6=6144
+Permute                  ext/pm3_mbox_loc_perm    1 1 ext/pm3_mbox_loc ext/pm3_mbox_loc_perm 0=3
+Flatten                  ext/pm3_mbox_loc_flat    1 1 ext/pm3_mbox_loc_perm ext/pm3_mbox_loc_flat
+Convolution              ext/pm3_mbox_conf        1 1 stage4_tb/ext/pm3/res_stage4_tb/ext/pm3/res/relu_splitncnn_1 ext/pm3_mbox_conf 0=66 1=1 5=1 6=16896
+Permute                  ext/pm3_mbox_conf_perm   1 1 ext/pm3_mbox_conf ext/pm3_mbox_conf_perm 0=3
+Flatten                  ext/pm3_mbox_conf_flat   1 1 ext/pm3_mbox_conf_perm ext/pm3_mbox_conf_flat
+PriorBox                 ext/pm3_mbox_priorbox    2 1 stage4_tb/ext/pm3/res_stage4_tb/ext/pm3/res/relu_splitncnn_0 data_splitncnn_3 ext/pm3_mbox_priorbox -23300=1,1.124800e+02 -23301=1,1.641600e+02 -23302=2,2.000000e+00,3.000000e+00 9=-233 10=-233 13=5.000000e-01
+Convolution              ext/pm4_mbox_loc         1 1 stage4_tb/ext/pm4/res_stage4_tb/ext/pm4/res/relu_splitncnn_2 ext/pm4_mbox_loc 0=24 1=1 5=1 6=6144
+Permute                  ext/pm4_mbox_loc_perm    1 1 ext/pm4_mbox_loc ext/pm4_mbox_loc_perm 0=3
+Flatten                  ext/pm4_mbox_loc_flat    1 1 ext/pm4_mbox_loc_perm ext/pm4_mbox_loc_flat
+Convolution              ext/pm4_mbox_conf        1 1 stage4_tb/ext/pm4/res_stage4_tb/ext/pm4/res/relu_splitncnn_1 ext/pm4_mbox_conf 0=66 1=1 5=1 6=16896
+Permute                  ext/pm4_mbox_conf_perm   1 1 ext/pm4_mbox_conf ext/pm4_mbox_conf_perm 0=3
+Flatten                  ext/pm4_mbox_conf_flat   1 1 ext/pm4_mbox_conf_perm ext/pm4_mbox_conf_flat
+PriorBox                 ext/pm4_mbox_priorbox    2 1 stage4_tb/ext/pm4/res_stage4_tb/ext/pm4/res/relu_splitncnn_0 data_splitncnn_2 ext/pm4_mbox_priorbox -23300=1,1.641600e+02 -23301=1,2.158400e+02 -23302=2,2.000000e+00,3.000000e+00 9=-233 10=-233 13=5.000000e-01
+Convolution              ext/pm5_mbox_loc         1 1 stage4_tb/ext/pm5/res_stage4_tb/ext/pm5/res/relu_splitncnn_2 ext/pm5_mbox_loc 0=24 1=1 5=1 6=6144
+Permute                  ext/pm5_mbox_loc_perm    1 1 ext/pm5_mbox_loc ext/pm5_mbox_loc_perm 0=3
+Flatten                  ext/pm5_mbox_loc_flat    1 1 ext/pm5_mbox_loc_perm ext/pm5_mbox_loc_flat
+Convolution              ext/pm5_mbox_conf        1 1 stage4_tb/ext/pm5/res_stage4_tb/ext/pm5/res/relu_splitncnn_1 ext/pm5_mbox_conf 0=66 1=1 5=1 6=16896
+Permute                  ext/pm5_mbox_conf_perm   1 1 ext/pm5_mbox_conf ext/pm5_mbox_conf_perm 0=3
+Flatten                  ext/pm5_mbox_conf_flat   1 1 ext/pm5_mbox_conf_perm ext/pm5_mbox_conf_flat
+PriorBox                 ext/pm5_mbox_priorbox    2 1 stage4_tb/ext/pm5/res_stage4_tb/ext/pm5/res/relu_splitncnn_0 data_splitncnn_1 ext/pm5_mbox_priorbox -23300=1,2.158400e+02 -23301=1,2.675200e+02 -23302=2,2.000000e+00,3.000000e+00 9=-233 10=-233 13=5.000000e-01
+Convolution              ext/pm6_mbox_loc         1 1 stage4_tb/ext/pm6/res_stage4_tb/ext/pm6/res/relu_splitncnn_2 ext/pm6_mbox_loc 0=24 1=1 5=1 6=6144
+Permute                  ext/pm6_mbox_loc_perm    1 1 ext/pm6_mbox_loc ext/pm6_mbox_loc_perm 0=3
+Flatten                  ext/pm6_mbox_loc_flat    1 1 ext/pm6_mbox_loc_perm ext/pm6_mbox_loc_flat
+Convolution              ext/pm6_mbox_conf        1 1 stage4_tb/ext/pm6/res_stage4_tb/ext/pm6/res/relu_splitncnn_1 ext/pm6_mbox_conf 0=66 1=1 5=1 6=16896
+Permute                  ext/pm6_mbox_conf_perm   1 1 ext/pm6_mbox_conf ext/pm6_mbox_conf_perm 0=3
+Flatten                  ext/pm6_mbox_conf_flat   1 1 ext/pm6_mbox_conf_perm ext/pm6_mbox_conf_flat
+PriorBox                 ext/pm6_mbox_priorbox    2 1 stage4_tb/ext/pm6/res_stage4_tb/ext/pm6/res/relu_splitncnn_0 data_splitncnn_0 ext/pm6_mbox_priorbox -23300=1,2.675200e+02 -23301=1,3.192000e+02 -23302=2,2.000000e+00,3.000000e+00 9=-233 10=-233 13=5.000000e-01
+Concat                   mbox_loc                 6 1 ext/pm1_mbox_loc_flat ext/pm2_mbox_loc_flat ext/pm3_mbox_loc_flat ext/pm4_mbox_loc_flat ext/pm5_mbox_loc_flat ext/pm6_mbox_loc_flat mbox_loc
+Concat                   mbox_conf                6 1 ext/pm1_mbox_conf_flat ext/pm2_mbox_conf_flat ext/pm3_mbox_conf_flat ext/pm4_mbox_conf_flat ext/pm5_mbox_conf_flat ext/pm6_mbox_conf_flat mbox_conf
+Concat                   mbox_priorbox            6 1 ext/pm1_mbox_priorbox ext/pm2_mbox_priorbox ext/pm3_mbox_priorbox ext/pm4_mbox_priorbox ext/pm5_mbox_priorbox ext/pm6_mbox_priorbox mbox_priorbox 0=1
+Reshape                  mbox_conf_reshape        1 1 mbox_conf mbox_conf_reshape 0=11 1=-1
+Softmax                  mbox_conf_softmax        1 1 mbox_conf_reshape mbox_conf_softmax 0=1 1=1
+Flatten                  mbox_conf_flatten        1 1 mbox_conf_softmax mbox_conf_flatten
+DetectionOutput          detection_out            3 1 mbox_loc mbox_conf_flatten mbox_priorbox detection_out 0=11 1=4.500000e-01 2=400 3=200 4=3.000000e-01
+DeconvolutionDepthWise   upsample                 1 1 stage4_tb/ext/pm2/res_stage4_tb/ext/pm2/res/relu_splitncnn_0 upsample 0=128 1=8 3=4 4=2 6=16384 7=128
+Concat                   upsample/sum             2 1 upsample stage1_tb_stage1_tb/relu_splitncnn_0 upsample/sum
+Convolution              seg_conv1                1 1 upsample/sum seg_conv1_seg_conv1/relu 0=16 1=3 2=2 4=2 5=1 6=36864 9=1
+Convolution              seg_conv2                1 1 seg_conv1_seg_conv1/relu seg_conv2_seg_conv2/relu 0=128 1=1 2=2 5=1 6=2048 9=1
+Convolution              seg_conv3                1 1 seg_conv2_seg_conv2/relu sigmoid 0=2 1=1 5=1 6=256 9=4
