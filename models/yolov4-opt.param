@@ -1,0 +1,187 @@
+7767517
+185 222
+Input                    data                     0 1 data 0=608 1=608 2=3
+Convolution              0_30                     1 1 data 0_30_bn_mish 0=32 1=3 4=1 5=1 6=864 9=5
+Convolution              1_40                     1 1 0_30_bn_mish 1_40_bn_mish 0=64 1=3 3=2 4=1 5=1 6=18432 9=5
+Split                    1_40_bn_mish_split       1 2 1_40_bn_mish 1_40_bn_mish_split_0 1_40_bn_mish_split_1
+Convolution              2_48                     1 1 1_40_bn_mish_split_0 2_48_bn_mish 0=64 1=1 5=1 6=4096 9=5
+Convolution              4_59                     1 1 1_40_bn_mish_split_1 4_59_bn_mish 0=64 1=1 5=1 6=4096 9=5
+Split                    4_59_bn_mish_split       1 2 4_59_bn_mish 4_59_bn_mish_split_0 4_59_bn_mish_split_1
+Convolution              5_67                     1 1 4_59_bn_mish_split_0 5_67_bn_mish 0=32 1=1 5=1 6=2048 9=5
+Convolution              6_75                     1 1 5_67_bn_mish 6_75_bn_mish 0=64 1=3 4=1 5=1 6=18432 9=5
+Eltwise                  7_83                     2 1 6_75_bn_mish 4_59_bn_mish_split_1 7_83 0=1
+Convolution              8_87                     1 1 7_83 8_87_bn_mish 0=64 1=1 5=1 6=4096 9=5
+Concat                   9_95                     2 1 8_87_bn_mish 2_48_bn_mish 9_95
+Convolution              10_98                    1 1 9_95 10_98_bn_mish 0=64 1=1 5=1 6=8192 9=5
+Convolution              11_108                   1 1 10_98_bn_mish 11_108_bn_mish 0=128 1=3 3=2 4=1 5=1 6=73728 9=5
+Split                    11_108_bn_mish_split     1 2 11_108_bn_mish 11_108_bn_mish_split_0 11_108_bn_mish_split_1
+Convolution              12_116                   1 1 11_108_bn_mish_split_0 12_116_bn_mish 0=64 1=1 5=1 6=8192 9=5
+Convolution              14_127                   1 1 11_108_bn_mish_split_1 14_127_bn_mish 0=64 1=1 5=1 6=8192 9=5
+Split                    14_127_bn_mish_split     1 2 14_127_bn_mish 14_127_bn_mish_split_0 14_127_bn_mish_split_1
+Convolution              15_135                   1 1 14_127_bn_mish_split_0 15_135_bn_mish 0=64 1=1 5=1 6=4096 9=5
+Convolution              16_143                   1 1 15_135_bn_mish 16_143_bn_mish 0=64 1=3 4=1 5=1 6=36864 9=5
+Eltwise                  17_151                   2 1 16_143_bn_mish 14_127_bn_mish_split_1 17_151 0=1
+Split                    17_151_split             1 2 17_151 17_151_split_0 17_151_split_1
+Convolution              18_155                   1 1 17_151_split_0 18_155_bn_mish 0=64 1=1 5=1 6=4096 9=5
+Convolution              19_163                   1 1 18_155_bn_mish 19_163_bn_mish 0=64 1=3 4=1 5=1 6=36864 9=5
+Eltwise                  20_171                   2 1 19_163_bn_mish 17_151_split_1 20_171 0=1
+Convolution              21_175                   1 1 20_171 21_175_bn_mish 0=64 1=1 5=1 6=4096 9=5
+Concat                   22_183                   2 1 21_175_bn_mish 12_116_bn_mish 22_183
+Convolution              23_186                   1 1 22_183 23_186_bn_mish 0=128 1=1 5=1 6=16384 9=5
+Convolution              24_196                   1 1 23_186_bn_mish 24_196_bn_mish 0=256 1=3 3=2 4=1 5=1 6=294912 9=5
+Split                    24_196_bn_mish_split     1 2 24_196_bn_mish 24_196_bn_mish_split_0 24_196_bn_mish_split_1
+Convolution              25_204                   1 1 24_196_bn_mish_split_0 25_204_bn_mish 0=128 1=1 5=1 6=32768 9=5
+Convolution              27_215                   1 1 24_196_bn_mish_split_1 27_215_bn_mish 0=128 1=1 5=1 6=32768 9=5
+Split                    27_215_bn_mish_split     1 2 27_215_bn_mish 27_215_bn_mish_split_0 27_215_bn_mish_split_1
+Convolution              28_223                   1 1 27_215_bn_mish_split_0 28_223_bn_mish 0=128 1=1 5=1 6=16384 9=5
+Convolution              29_231                   1 1 28_223_bn_mish 29_231_bn_mish 0=128 1=3 4=1 5=1 6=147456 9=5
+Eltwise                  30_239                   2 1 29_231_bn_mish 27_215_bn_mish_split_1 30_239 0=1
+Split                    30_239_split             1 2 30_239 30_239_split_0 30_239_split_1
+Convolution              31_243                   1 1 30_239_split_0 31_243_bn_mish 0=128 1=1 5=1 6=16384 9=5
+Convolution              32_251                   1 1 31_243_bn_mish 32_251_bn_mish 0=128 1=3 4=1 5=1 6=147456 9=5
+Eltwise                  33_259                   2 1 32_251_bn_mish 30_239_split_1 33_259 0=1
+Split                    33_259_split             1 2 33_259 33_259_split_0 33_259_split_1
+Convolution              34_263                   1 1 33_259_split_0 34_263_bn_mish 0=128 1=1 5=1 6=16384 9=5
+Convolution              35_271                   1 1 34_263_bn_mish 35_271_bn_mish 0=128 1=3 4=1 5=1 6=147456 9=5
+Eltwise                  36_279                   2 1 35_271_bn_mish 33_259_split_1 36_279 0=1
+Split                    36_279_split             1 2 36_279 36_279_split_0 36_279_split_1
+Convolution              37_283                   1 1 36_279_split_0 37_283_bn_mish 0=128 1=1 5=1 6=16384 9=5
+Convolution              38_291                   1 1 37_283_bn_mish 38_291_bn_mish 0=128 1=3 4=1 5=1 6=147456 9=5
+Eltwise                  39_299                   2 1 38_291_bn_mish 36_279_split_1 39_299 0=1
+Split                    39_299_split             1 2 39_299 39_299_split_0 39_299_split_1
+Convolution              40_304                   1 1 39_299_split_0 40_304_bn_mish 0=128 1=1 5=1 6=16384 9=5
+Convolution              41_312                   1 1 40_304_bn_mish 41_312_bn_mish 0=128 1=3 4=1 5=1 6=147456 9=5
+Eltwise                  42_320                   2 1 41_312_bn_mish 39_299_split_1 42_320 0=1
+Split                    42_320_split             1 2 42_320 42_320_split_0 42_320_split_1
+Convolution              43_324                   1 1 42_320_split_0 43_324_bn_mish 0=128 1=1 5=1 6=16384 9=5
+Convolution              44_332                   1 1 43_324_bn_mish 44_332_bn_mish 0=128 1=3 4=1 5=1 6=147456 9=5
+Eltwise                  45_340                   2 1 44_332_bn_mish 42_320_split_1 45_340 0=1
+Split                    45_340_split             1 2 45_340 45_340_split_0 45_340_split_1
+Convolution              46_344                   1 1 45_340_split_0 46_344_bn_mish 0=128 1=1 5=1 6=16384 9=5
+Convolution              47_352                   1 1 46_344_bn_mish 47_352_bn_mish 0=128 1=3 4=1 5=1 6=147456 9=5
+Eltwise                  48_360                   2 1 47_352_bn_mish 45_340_split_1 48_360 0=1
+Split                    48_360_split             1 2 48_360 48_360_split_0 48_360_split_1
+Convolution              49_364                   1 1 48_360_split_0 49_364_bn_mish 0=128 1=1 5=1 6=16384 9=5
+Convolution              50_372                   1 1 49_364_bn_mish 50_372_bn_mish 0=128 1=3 4=1 5=1 6=147456 9=5
+Eltwise                  51_380                   2 1 50_372_bn_mish 48_360_split_1 51_380 0=1
+Convolution              52_384                   1 1 51_380 52_384_bn_mish 0=128 1=1 5=1 6=16384 9=5
+Concat                   53_392                   2 1 52_384_bn_mish 25_204_bn_mish 53_392
+Convolution              54_395                   1 1 53_392 54_395_bn_mish 0=256 1=1 5=1 6=65536 9=5
+Split                    54_395_bn_mish_split     1 2 54_395_bn_mish 54_395_bn_mish_split_0 54_395_bn_mish_split_1
+Convolution              55_405                   1 1 54_395_bn_mish_split_0 55_405_bn_mish 0=512 1=3 3=2 4=1 5=1 6=1179648 9=5
+Split                    55_405_bn_mish_split     1 2 55_405_bn_mish 55_405_bn_mish_split_0 55_405_bn_mish_split_1
+Convolution              56_413                   1 1 55_405_bn_mish_split_0 56_413_bn_mish 0=256 1=1 5=1 6=131072 9=5
+Convolution              58_424                   1 1 55_405_bn_mish_split_1 58_424_bn_mish 0=256 1=1 5=1 6=131072 9=5
+Split                    58_424_bn_mish_split     1 2 58_424_bn_mish 58_424_bn_mish_split_0 58_424_bn_mish_split_1
+Convolution              59_432                   1 1 58_424_bn_mish_split_0 59_432_bn_mish 0=256 1=1 5=1 6=65536 9=5
+Convolution              60_440                   1 1 59_432_bn_mish 60_440_bn_mish 0=256 1=3 4=1 5=1 6=589824 9=5
+Eltwise                  61_448                   2 1 60_440_bn_mish 58_424_bn_mish_split_1 61_448 0=1
+Split                    61_448_split             1 2 61_448 61_448_split_0 61_448_split_1
+Convolution              62_452                   1 1 61_448_split_0 62_452_bn_mish 0=256 1=1 5=1 6=65536 9=5
+Convolution              63_461                   1 1 62_452_bn_mish 63_461_bn_mish 0=256 1=3 4=1 5=1 6=589824 9=5
+Eltwise                  64_469                   2 1 63_461_bn_mish 61_448_split_1 64_469 0=1
+Split                    64_469_split             1 2 64_469 64_469_split_0 64_469_split_1
+Convolution              65_474                   1 1 64_469_split_0 65_474_bn_mish 0=256 1=1 5=1 6=65536 9=5
+Convolution              66_482                   1 1 65_474_bn_mish 66_482_bn_mish 0=256 1=3 4=1 5=1 6=589824 9=5
+Eltwise                  67_490                   2 1 66_482_bn_mish 64_469_split_1 67_490 0=1
+Split                    67_490_split             1 2 67_490 67_490_split_0 67_490_split_1
+Convolution              68_495                   1 1 67_490_split_0 68_495_bn_mish 0=256 1=1 5=1 6=65536 9=5
+Convolution              69_503                   1 1 68_495_bn_mish 69_503_bn_mish 0=256 1=3 4=1 5=1 6=589824 9=5
+Eltwise                  70_511                   2 1 69_503_bn_mish 67_490_split_1 70_511 0=1
+Split                    70_511_split             1 2 70_511 70_511_split_0 70_511_split_1
+Convolution              71_516                   1 1 70_511_split_0 71_516_bn_mish 0=256 1=1 5=1 6=65536 9=5
+Convolution              72_524                   1 1 71_516_bn_mish 72_524_bn_mish 0=256 1=3 4=1 5=1 6=589824 9=5
+Eltwise                  73_532                   2 1 72_524_bn_mish 70_511_split_1 73_532 0=1
+Split                    73_532_split             1 2 73_532 73_532_split_0 73_532_split_1
+Convolution              74_537                   1 1 73_532_split_0 74_537_bn_mish 0=256 1=1 5=1 6=65536 9=5
+Convolution              75_545                   1 1 74_537_bn_mish 75_545_bn_mish 0=256 1=3 4=1 5=1 6=589824 9=5
+Eltwise                  76_553                   2 1 75_545_bn_mish 73_532_split_1 76_553 0=1
+Split                    76_553_split             1 2 76_553 76_553_split_0 76_553_split_1
+Convolution              77_558                   1 1 76_553_split_0 77_558_bn_mish 0=256 1=1 5=1 6=65536 9=5
+Convolution              78_566                   1 1 77_558_bn_mish 78_566_bn_mish 0=256 1=3 4=1 5=1 6=589824 9=5
+Eltwise                  79_574                   2 1 78_566_bn_mish 76_553_split_1 79_574 0=1
+Split                    79_574_split             1 2 79_574 79_574_split_0 79_574_split_1
+Convolution              80_578                   1 1 79_574_split_0 80_578_bn_mish 0=256 1=1 5=1 6=65536 9=5
+Convolution              81_586                   1 1 80_578_bn_mish 81_586_bn_mish 0=256 1=3 4=1 5=1 6=589824 9=5
+Eltwise                  82_594                   2 1 81_586_bn_mish 79_574_split_1 82_594 0=1
+Convolution              83_598                   1 1 82_594 83_598_bn_mish 0=256 1=1 5=1 6=65536 9=5
+Concat                   84_606                   2 1 83_598_bn_mish 56_413_bn_mish 84_606
+Convolution              85_609                   1 1 84_606 85_609_bn_mish 0=512 1=1 5=1 6=262144 9=5
+Split                    85_609_bn_mish_split     1 2 85_609_bn_mish 85_609_bn_mish_split_0 85_609_bn_mish_split_1
+Convolution              86_619                   1 1 85_609_bn_mish_split_0 86_619_bn_mish 0=1024 1=3 3=2 4=1 5=1 6=4718592 9=5
+Split                    86_619_bn_mish_split     1 2 86_619_bn_mish 86_619_bn_mish_split_0 86_619_bn_mish_split_1
+Convolution              87_627                   1 1 86_619_bn_mish_split_0 87_627_bn_mish 0=512 1=1 5=1 6=524288 9=5
+Convolution              89_638                   1 1 86_619_bn_mish_split_1 89_638_bn_mish 0=512 1=1 5=1 6=524288 9=5
+Split                    89_638_bn_mish_split     1 2 89_638_bn_mish 89_638_bn_mish_split_0 89_638_bn_mish_split_1
+Convolution              90_646                   1 1 89_638_bn_mish_split_0 90_646_bn_mish 0=512 1=1 5=1 6=262144 9=5
+Convolution              91_654                   1 1 90_646_bn_mish 91_654_bn_mish 0=512 1=3 4=1 5=1 6=2359296 9=5
+Eltwise                  92_662                   2 1 91_654_bn_mish 89_638_bn_mish_split_1 92_662 0=1
+Split                    92_662_split             1 2 92_662 92_662_split_0 92_662_split_1
+Convolution              93_666                   1 1 92_662_split_0 93_666_bn_mish 0=512 1=1 5=1 6=262144 9=5
+Convolution              94_674                   1 1 93_666_bn_mish 94_674_bn_mish 0=512 1=3 4=1 5=1 6=2359296 9=5
+Eltwise                  95_682                   2 1 94_674_bn_mish 92_662_split_1 95_682 0=1
+Split                    95_682_split             1 2 95_682 95_682_split_0 95_682_split_1
+Convolution              96_686                   1 1 95_682_split_0 96_686_bn_mish 0=512 1=1 5=1 6=262144 9=5
+Convolution              97_694                   1 1 96_686_bn_mish 97_694_bn_mish 0=512 1=3 4=1 5=1 6=2359296 9=5
+Eltwise                  98_702                   2 1 97_694_bn_mish 95_682_split_1 98_702 0=1
+Split                    98_702_split             1 2 98_702 98_702_split_0 98_702_split_1
+Convolution              99_706                   1 1 98_702_split_0 99_706_bn_mish 0=512 1=1 5=1 6=262144 9=5
+Convolution              100_714                  1 1 99_706_bn_mish 100_714_bn_mish 0=512 1=3 4=1 5=1 6=2359296 9=5
+Eltwise                  101_722                  2 1 100_714_bn_mish 98_702_split_1 101_722 0=1
+Convolution              102_726                  1 1 101_722 102_726_bn_mish 0=512 1=1 5=1 6=262144 9=5
+Concat                   103_734                  2 1 102_726_bn_mish 87_627_bn_mish 103_734
+Convolution              104_737                  1 1 103_734 104_737_bn_mish 0=1024 1=1 5=1 6=1048576 9=5
+Convolution              105_747                  1 1 104_737_bn_mish 105_747_bn_leaky 0=512 1=1 5=1 6=524288 9=2 -23310=1,1.000000e-01
+Convolution              106_755                  1 1 105_747_bn_leaky 106_755_bn_leaky 0=1024 1=3 4=1 5=1 6=4718592 9=2 -23310=1,1.000000e-01
+Convolution              107_763                  1 1 106_755_bn_leaky 107_763_bn_leaky 0=512 1=1 5=1 6=524288 9=2 -23310=1,1.000000e-01
+Split                    107_763_bn_leaky_split   1 4 107_763_bn_leaky 107_763_bn_leaky_split_0 107_763_bn_leaky_split_1 107_763_bn_leaky_split_2 107_763_bn_leaky_split_3
+Pooling                  108_772                  1 1 107_763_bn_leaky_split_0 108_772 1=5 14=4 15=4 5=1
+Pooling                  110_779                  1 1 107_763_bn_leaky_split_1 110_779 1=9 14=8 15=8 5=1
+Pooling                  112_786                  1 1 107_763_bn_leaky_split_2 112_786 1=13 14=12 15=12 5=1
+Concat                   113_790                  4 1 112_786 110_779 108_772 107_763_bn_leaky_split_3 113_790
+Convolution              114_794                  1 1 113_790 114_794_bn_leaky 0=512 1=1 5=1 6=1048576 9=2 -23310=1,1.000000e-01
+Convolution              115_802                  1 1 114_794_bn_leaky 115_802_bn_leaky 0=1024 1=3 4=1 5=1 6=4718592 9=2 -23310=1,1.000000e-01
+Convolution              116_810                  1 1 115_802_bn_leaky 116_810_bn_leaky 0=512 1=1 5=1 6=524288 9=2 -23310=1,1.000000e-01
+Split                    116_810_bn_leaky_split   1 2 116_810_bn_leaky 116_810_bn_leaky_split_0 116_810_bn_leaky_split_1
+Convolution              117_818                  1 1 116_810_bn_leaky_split_0 117_818_bn_leaky 0=256 1=1 5=1 6=131072 9=2 -23310=1,1.000000e-01
+Interp                   118_826                  1 1 117_818_bn_leaky 118_826 0=1 1=2.000000e+00 2=2.000000e+00
+Convolution              120_832                  1 1 85_609_bn_mish_split_1 120_832_bn_leaky 0=256 1=1 5=1 6=131072 9=2 -23310=1,1.000000e-01
+Concat                   121_840                  2 1 120_832_bn_leaky 118_826 121_840
+Convolution              122_843                  1 1 121_840 122_843_bn_leaky 0=256 1=1 5=1 6=131072 9=2 -23310=1,1.000000e-01
+Convolution              123_851                  1 1 122_843_bn_leaky 123_851_bn_leaky 0=512 1=3 4=1 5=1 6=1179648 9=2 -23310=1,1.000000e-01
+Convolution              124_859                  1 1 123_851_bn_leaky 124_859_bn_leaky 0=256 1=1 5=1 6=131072 9=2 -23310=1,1.000000e-01
+Convolution              125_867                  1 1 124_859_bn_leaky 125_867_bn_leaky 0=512 1=3 4=1 5=1 6=1179648 9=2 -23310=1,1.000000e-01
+Convolution              126_875                  1 1 125_867_bn_leaky 126_875_bn_leaky 0=256 1=1 5=1 6=131072 9=2 -23310=1,1.000000e-01
+Split                    126_875_bn_leaky_split   1 2 126_875_bn_leaky 126_875_bn_leaky_split_0 126_875_bn_leaky_split_1
+Convolution              127_883                  1 1 126_875_bn_leaky_split_0 127_883_bn_leaky 0=128 1=1 5=1 6=32768 9=2 -23310=1,1.000000e-01
+Interp                   128_891                  1 1 127_883_bn_leaky 128_891 0=1 1=2.000000e+00 2=2.000000e+00
+Convolution              130_897                  1 1 54_395_bn_mish_split_1 130_897_bn_leaky 0=128 1=1 5=1 6=32768 9=2 -23310=1,1.000000e-01
+Concat                   131_905                  2 1 130_897_bn_leaky 128_891 131_905
+Convolution              132_908                  1 1 131_905 132_908_bn_leaky 0=128 1=1 5=1 6=32768 9=2 -23310=1,1.000000e-01
+Convolution              133_916                  1 1 132_908_bn_leaky 133_916_bn_leaky 0=256 1=3 4=1 5=1 6=294912 9=2 -23310=1,1.000000e-01
+Convolution              134_924                  1 1 133_916_bn_leaky 134_924_bn_leaky 0=128 1=1 5=1 6=32768 9=2 -23310=1,1.000000e-01
+Convolution              135_932                  1 1 134_924_bn_leaky 135_932_bn_leaky 0=256 1=3 4=1 5=1 6=294912 9=2 -23310=1,1.000000e-01
+Convolution              136_940                  1 1 135_932_bn_leaky 136_940_bn_leaky 0=128 1=1 5=1 6=32768 9=2 -23310=1,1.000000e-01
+Split                    136_940_bn_leaky_split   1 2 136_940_bn_leaky 136_940_bn_leaky_split_0 136_940_bn_leaky_split_1
+Convolution              137_950                  1 1 136_940_bn_leaky_split_0 137_950_bn_leaky 0=256 1=3 4=1 5=1 6=294912 9=2 -23310=1,1.000000e-01
+Convolution              138_958                  1 1 137_950_bn_leaky 138_958 0=255 1=1 5=1 6=65280
+Convolution              141_986                  1 1 136_940_bn_leaky_split_1 141_986_bn_leaky 0=256 1=3 3=2 4=1 5=1 6=294912 9=2 -23310=1,1.000000e-01
+Concat                   142_994                  2 1 141_986_bn_leaky 126_875_bn_leaky_split_1 142_994
+Convolution              143_997                  1 1 142_994 143_997_bn_leaky 0=256 1=1 5=1 6=131072 9=2 -23310=1,1.000000e-01
+Convolution              144_1005                 1 1 143_997_bn_leaky 144_1005_bn_leaky 0=512 1=3 4=1 5=1 6=1179648 9=2 -23310=1,1.000000e-01
+Convolution              145_1013                 1 1 144_1005_bn_leaky 145_1013_bn_leaky 0=256 1=1 5=1 6=131072 9=2 -23310=1,1.000000e-01
+Convolution              146_1021                 1 1 145_1013_bn_leaky 146_1021_bn_leaky 0=512 1=3 4=1 5=1 6=1179648 9=2 -23310=1,1.000000e-01
+Convolution              147_1029                 1 1 146_1021_bn_leaky 147_1029_bn_leaky 0=256 1=1 5=1 6=131072 9=2 -23310=1,1.000000e-01
+Split                    147_1029_bn_leaky_split  1 2 147_1029_bn_leaky 147_1029_bn_leaky_split_0 147_1029_bn_leaky_split_1
+Convolution              148_1037                 1 1 147_1029_bn_leaky_split_0 148_1037_bn_leaky 0=512 1=3 4=1 5=1 6=1179648 9=2 -23310=1,1.000000e-01
+Convolution              149_1045                 1 1 148_1037_bn_leaky 149_1045 0=255 1=1 5=1 6=130560
+Convolution              152_1073                 1 1 147_1029_bn_leaky_split_1 152_1073_bn_leaky 0=512 1=3 3=2 4=1 5=1 6=1179648 9=2 -23310=1,1.000000e-01
+Concat                   153_1081                 2 1 152_1073_bn_leaky 116_810_bn_leaky_split_1 153_1081
+Convolution              154_1084                 1 1 153_1081 154_1084_bn_leaky 0=512 1=1 5=1 6=524288 9=2 -23310=1,1.000000e-01
+Convolution              155_1092                 1 1 154_1084_bn_leaky 155_1092_bn_leaky 0=1024 1=3 4=1 5=1 6=4718592 9=2 -23310=1,1.000000e-01
+Convolution              156_1100                 1 1 155_1092_bn_leaky 156_1100_bn_leaky 0=512 1=1 5=1 6=524288 9=2 -23310=1,1.000000e-01
+Convolution              157_1108                 1 1 156_1100_bn_leaky 157_1108_bn_leaky 0=1024 1=3 4=1 5=1 6=4718592 9=2 -23310=1,1.000000e-01
+Convolution              158_1116                 1 1 157_1108_bn_leaky 158_1116_bn_leaky 0=512 1=1 5=1 6=524288 9=2 -23310=1,1.000000e-01
+Convolution              159_1124                 1 1 158_1116_bn_leaky 159_1124_bn_leaky 0=1024 1=3 4=1 5=1 6=4718592 9=2 -23310=1,1.000000e-01
+Convolution              160_1132                 1 1 159_1124_bn_leaky 160_1132 0=255 1=1 5=1 6=261120
+Yolov3DetectionOutput    detection_out            3 1 138_958 149_1045 160_1132 output 0=80 1=3 2=2.500000e-01 -23304=18,1.200000e+01,1.600000e+01,1.900000e+01,3.600000e+01,4.000000e+01,2.800000e+01,3.600000e+01,7.500000e+01,7.600000e+01,5.500000e+01,7.200000e+01,1.460000e+02,1.420000e+02,1.100000e+02,1.920000e+02,2.430000e+02,4.590000e+02,4.010000e+02 -23305=9,0,1065353216,1073741824,1077936128,1082130432,1084227584,1086324736,1088421888,1090519040 -23306=3,9.600000e+00,1.760000e+01,3.360000e+01
