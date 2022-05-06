@@ -1,0 +1,28 @@
+From 15cb40695698ddece0813a0db9c681df268e00fa Mon Sep 17 00:00:00 2001
+From: Ni Hui <shuizhuyuanluo@126.com>
+Date: Tue, 3 May 2022 20:18:00 +0800
+Subject: [PATCH 1/4] target/mips: Fix SAT_S trans helper
+
+Fix the SAT_S and SAT_U trans helper confusion.
+
+Signed-off-by: Ni Hui <shuizhuyuanluo@126.com>
+---
+ target/mips/tcg/msa_translate.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/target/mips/tcg/msa_translate.c b/target/mips/tcg/msa_translate.c
+index 7576b3ed86..76307102f2 100644
+--- a/target/mips/tcg/msa_translate.c
++++ b/target/mips/tcg/msa_translate.c
+@@ -399,7 +399,7 @@ TRANS(BSETI,    trans_msa_bit, gen_helper_msa_bseti_df);
+ TRANS(BNEGI,    trans_msa_bit, gen_helper_msa_bnegi_df);
+ TRANS(BINSLI,   trans_msa_bit, gen_helper_msa_binsli_df);
+ TRANS(BINSRI,   trans_msa_bit, gen_helper_msa_binsri_df);
+-TRANS(SAT_S,    trans_msa_bit, gen_helper_msa_sat_u_df);
++TRANS(SAT_S,    trans_msa_bit, gen_helper_msa_sat_s_df);
+ TRANS(SAT_U,    trans_msa_bit, gen_helper_msa_sat_u_df);
+ TRANS(SRARI,    trans_msa_bit, gen_helper_msa_srari_df);
+ TRANS(SRLRI,    trans_msa_bit, gen_helper_msa_srlri_df);
+-- 
+2.25.1
+

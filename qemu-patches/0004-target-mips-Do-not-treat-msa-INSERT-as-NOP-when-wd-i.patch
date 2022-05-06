@@ -1,0 +1,58 @@
+From c718a6a8c2209bbf657b7c6008d7c93191d60623 Mon Sep 17 00:00:00 2001
+From: Ni Hui <shuizhuyuanluo@126.com>
+Date: Tue, 3 May 2022 20:40:56 +0800
+Subject: [PATCH 4/4] target/mips: Do not treat msa INSERT as NOP when wd is
+ zero
+
+Only for msa COPY_U/COPY_S with wd zero, we treat it as NOP.
+
+Move this special rule into COPY_U and COPY_S trans function.
+
+Signed-off-by: Ni Hui <shuizhuyuanluo@126.com>
+---
+ target/mips/tcg/msa_translate.c | 15 ++++++++++-----
+ 1 file changed, 10 insertions(+), 5 deletions(-)
+
+diff --git a/target/mips/tcg/msa_translate.c b/target/mips/tcg/msa_translate.c
+index 92ccc6f921..0b3dd0957c 100644
+--- a/target/mips/tcg/msa_translate.c
++++ b/target/mips/tcg/msa_translate.c
+@@ -603,11 +603,6 @@ static bool trans_msa_elm_fn(DisasContext *ctx, arg_msa_elm_df *a,
+         return true;
+     }
+ 
+-    if (a->wd == 0) {
+-        /* Treat as NOP. */
+-        return true;
+-    }
+-
+     gen_msa_elm[a->df](cpu_env,
+                        tcg_constant_i32(a->wd),
+                        tcg_constant_i32(a->ws),
+@@ -624,6 +619,11 @@ static bool trans_msa_elm_fn(DisasContext *ctx, arg_msa_elm_df *a,
+ 
+ static bool trans_COPY_U(DisasContext *ctx, arg_msa_elm_df *a)
+ {
++    if (a->wd == 0) {
++        /* Treat as NOP. */
++        return true;
++    }
++
+     static gen_helper_piii * const gen_msa_copy_u[4] = {
+         gen_helper_msa_copy_u_b, gen_helper_msa_copy_u_h,
+         NULL_IF_MIPS32(gen_helper_msa_copy_u_w), NULL
+@@ -634,6 +634,11 @@ static bool trans_COPY_U(DisasContext *ctx, arg_msa_elm_df *a)
+ 
+ static bool trans_COPY_S(DisasContext *ctx, arg_msa_elm_df *a)
+ {
++    if (a->wd == 0) {
++        /* Treat as NOP. */
++        return true;
++    }
++
+     static gen_helper_piii * const gen_msa_copy_s[4] = {
+         gen_helper_msa_copy_s_b, gen_helper_msa_copy_s_h,
+         gen_helper_msa_copy_s_w, NULL_IF_MIPS32(gen_helper_msa_copy_s_d)
+-- 
+2.25.1
+

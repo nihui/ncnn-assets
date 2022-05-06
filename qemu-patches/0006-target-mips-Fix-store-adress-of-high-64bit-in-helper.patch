@@ -1,0 +1,30 @@
+From 9cb29fb8c4a16d4f53082261db98162efe84bcab Mon Sep 17 00:00:00 2001
+From: nihui <shuizhuyuanluo@126.com>
+Date: Wed, 4 May 2022 10:26:04 +0800
+Subject: [PATCH] target/mips: Fix store adress of high 64bit in
+ helper_msa_st_b()
+
+This patch fix the issue that helper_msa_st_b() write high 64bit
+data to where the low 64bit resides, leaving high 64bit undefined.
+
+Signed-off-by: Ni Hui <shuizhuyuanluo@126.com>
+---
+ target/mips/tcg/msa_helper.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/target/mips/tcg/msa_helper.c b/target/mips/tcg/msa_helper.c
+index 4dde5d639a..736283e2af 100644
+--- a/target/mips/tcg/msa_helper.c
++++ b/target/mips/tcg/msa_helper.c
+@@ -8329,7 +8329,7 @@ void helper_msa_st_b(CPUMIPSState *env, uint32_t wd,
+ 
+     /* Store 8 bytes at a time.  Vector element ordering makes this LE.  */
+     cpu_stq_le_data_ra(env, addr + 0, pwd->d[0], ra);
+-    cpu_stq_le_data_ra(env, addr + 0, pwd->d[1], ra);
++    cpu_stq_le_data_ra(env, addr + 8, pwd->d[1], ra);
+ }
+ 
+ void helper_msa_st_h(CPUMIPSState *env, uint32_t wd,
+-- 
+2.25.1
+

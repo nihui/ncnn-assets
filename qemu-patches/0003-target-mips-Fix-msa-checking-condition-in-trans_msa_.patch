@@ -1,0 +1,30 @@
+From 92539463d360373a550e673fa9a7f38b8cffc261 Mon Sep 17 00:00:00 2001
+From: Ni Hui <shuizhuyuanluo@126.com>
+Date: Tue, 3 May 2022 20:35:17 +0800
+Subject: [PATCH 3/4] target/mips: Fix msa checking condition in
+ trans_msa_elm_fn()
+
+Fix issue that condition of check_msa_enabled(ctx) is reversed
+that causes segfault when msa elm_fn op encountered.
+
+Signed-off-by: Ni Hui <shuizhuyuanluo@126.com>
+---
+ target/mips/tcg/msa_translate.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/target/mips/tcg/msa_translate.c b/target/mips/tcg/msa_translate.c
+index aa45bae0aa..92ccc6f921 100644
+--- a/target/mips/tcg/msa_translate.c
++++ b/target/mips/tcg/msa_translate.c
+@@ -599,7 +599,7 @@ static bool trans_msa_elm_fn(DisasContext *ctx, arg_msa_elm_df *a,
+         return false;
+     }
+ 
+-    if (check_msa_enabled(ctx)) {
++    if (!check_msa_enabled(ctx)) {
+         return true;
+     }
+ 
+-- 
+2.25.1
+
