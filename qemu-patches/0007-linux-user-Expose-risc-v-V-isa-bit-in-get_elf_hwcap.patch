@@ -1,0 +1,31 @@
+From db8eabe218295f803a6ff10c509cef18c9980e59 Mon Sep 17 00:00:00 2001
+From: nihui <shuizhuyuanluo@126.com>
+Date: Wed, 4 May 2022 12:22:17 +0800
+Subject: [PATCH] linux-user: Expose risc-v V isa bit in get_elf_hwcap()
+
+This patch brings the optional risc-v vector bits
+in hwcap so that application could detect these isa support from
+/proc/self/auxv correctly in qemu userspace mode.
+
+Signed-off-by: Ni Hui <shuizhuyuanluo@126.com>
+---
+ linux-user/elfload.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/linux-user/elfload.c b/linux-user/elfload.c
+index 61063fd974..3f0ef2b8f6 100644
+--- a/linux-user/elfload.c
++++ b/linux-user/elfload.c
+@@ -1484,7 +1484,8 @@ static uint32_t get_elf_hwcap(void)
+ #define MISA_BIT(EXT) (1 << (EXT - 'A'))
+     RISCVCPU *cpu = RISCV_CPU(thread_cpu);
+     uint32_t mask = MISA_BIT('I') | MISA_BIT('M') | MISA_BIT('A')
+-                    | MISA_BIT('F') | MISA_BIT('D') | MISA_BIT('C');
++                    | MISA_BIT('F') | MISA_BIT('D') | MISA_BIT('C')
++                    | MISA_BIT('V');
+ 
+     return cpu->env.misa_ext & mask;
+ #undef MISA_BIT
+-- 
+2.25.1
+

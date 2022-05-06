@@ -1,0 +1,41 @@
+From 1b405772f810510bbd7873f3e51067642b39b3dc Mon Sep 17 00:00:00 2001
+From: Ni Hui <shuizhuyuanluo@126.com>
+Date: Tue, 3 May 2022 20:29:33 +0800
+Subject: [PATCH 2/4] target/mips: Fix df_extract_val() and df_extract_df() dfe
+ lookup
+
+Actually look into dfe structure data so that df_extract_val() and
+df_extract_df() can return immediate and datafield other than BYTE.
+
+Signed-off-by: Ni Hui <shuizhuyuanluo@126.com>
+---
+ target/mips/tcg/msa_translate.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/target/mips/tcg/msa_translate.c b/target/mips/tcg/msa_translate.c
+index 76307102f2..aa45bae0aa 100644
+--- a/target/mips/tcg/msa_translate.c
++++ b/target/mips/tcg/msa_translate.c
+@@ -68,8 +68,8 @@ struct dfe {
+ static int df_extract_val(DisasContext *ctx, int x, const struct dfe *s)
+ {
+     for (unsigned i = 0; i < 4; i++) {
+-        if (extract32(x, s->start, s->length) == s->mask) {
+-            return extract32(x, 0, s->start);
++        if (extract32(x, s[i].start, s[i].length) == s[i].mask) {
++            return extract32(x, 0, s[i].start);
+         }
+     }
+     return -1;
+@@ -82,7 +82,7 @@ static int df_extract_val(DisasContext *ctx, int x, const struct dfe *s)
+ static int df_extract_df(DisasContext *ctx, int x, const struct dfe *s)
+ {
+     for (unsigned i = 0; i < 4; i++) {
+-        if (extract32(x, s->start, s->length) == s->mask) {
++        if (extract32(x, s[i].start, s[i].length) == s[i].mask) {
+             return i;
+         }
+     }
+-- 
+2.25.1
+
