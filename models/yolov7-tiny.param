@@ -1,0 +1,121 @@
+7767517
+119 153
+Input                    images                   0 1 images
+Convolution              Conv_1                   1 1 images onnx::Conv_122 0=32 1=3 3=2 4=1 5=1 6=864 9=2 -23310=1,1.000000e-01
+Convolution              Conv_3                   1 1 onnx::Conv_122 onnx::Conv_124 0=64 1=3 3=2 4=1 5=1 6=18432 9=2 -23310=1,1.000000e-01
+Split                    splitncnn_0              1 2 onnx::Conv_124 onnx::Conv_124_splitncnn_0 onnx::Conv_124_splitncnn_1
+Convolution              Conv_5                   1 1 onnx::Conv_124_splitncnn_1 onnx::Concat_126 0=32 1=1 5=1 6=2048 9=2 -23310=1,1.000000e-01
+Convolution              Conv_7                   1 1 onnx::Conv_124_splitncnn_0 onnx::Conv_128 0=32 1=1 5=1 6=2048 9=2 -23310=1,1.000000e-01
+Split                    splitncnn_1              1 2 onnx::Conv_128 onnx::Conv_128_splitncnn_0 onnx::Conv_128_splitncnn_1
+Convolution              Conv_9                   1 1 onnx::Conv_128_splitncnn_1 onnx::Conv_130 0=32 1=3 4=1 5=1 6=9216 9=2 -23310=1,1.000000e-01
+Split                    splitncnn_2              1 2 onnx::Conv_130 onnx::Conv_130_splitncnn_0 onnx::Conv_130_splitncnn_1
+Convolution              Conv_11                  1 1 onnx::Conv_130_splitncnn_1 onnx::Concat_132 0=32 1=3 4=1 5=1 6=9216 9=2 -23310=1,1.000000e-01
+Concat                   Concat_13                4 1 onnx::Concat_132 onnx::Conv_130_splitncnn_0 onnx::Conv_128_splitncnn_0 onnx::Concat_126 input.24
+Convolution              Conv_14                  1 1 input.24 onnx::MaxPool_135 0=64 1=1 5=1 6=8192 9=2 -23310=1,1.000000e-01
+Pooling                  MaxPool_16               1 1 onnx::MaxPool_135 input.32 1=2 2=2 5=1
+Split                    splitncnn_3              1 2 input.32 input.32_splitncnn_0 input.32_splitncnn_1
+Convolution              Conv_17                  1 1 input.32_splitncnn_1 onnx::Concat_138 0=64 1=1 5=1 6=4096 9=2 -23310=1,1.000000e-01
+Convolution              Conv_19                  1 1 input.32_splitncnn_0 onnx::Conv_140 0=64 1=1 5=1 6=4096 9=2 -23310=1,1.000000e-01
+Split                    splitncnn_4              1 2 onnx::Conv_140 onnx::Conv_140_splitncnn_0 onnx::Conv_140_splitncnn_1
+Convolution              Conv_21                  1 1 onnx::Conv_140_splitncnn_1 onnx::Conv_142 0=64 1=3 4=1 5=1 6=36864 9=2 -23310=1,1.000000e-01
+Split                    splitncnn_5              1 2 onnx::Conv_142 onnx::Conv_142_splitncnn_0 onnx::Conv_142_splitncnn_1
+Convolution              Conv_23                  1 1 onnx::Conv_142_splitncnn_1 onnx::Concat_144 0=64 1=3 4=1 5=1 6=36864 9=2 -23310=1,1.000000e-01
+Concat                   Concat_25                4 1 onnx::Concat_144 onnx::Conv_142_splitncnn_0 onnx::Conv_140_splitncnn_0 onnx::Concat_138 input.52
+Convolution              Conv_26                  1 1 input.52 onnx::MaxPool_147 0=128 1=1 5=1 6=32768 9=2 -23310=1,1.000000e-01
+Split                    splitncnn_6              1 2 onnx::MaxPool_147 onnx::MaxPool_147_splitncnn_0 onnx::MaxPool_147_splitncnn_1
+Pooling                  MaxPool_28               1 1 onnx::MaxPool_147_splitncnn_1 input.60 1=2 2=2 5=1
+Split                    splitncnn_7              1 2 input.60 input.60_splitncnn_0 input.60_splitncnn_1
+Convolution              Conv_29                  1 1 input.60_splitncnn_1 onnx::Concat_150 0=128 1=1 5=1 6=16384 9=2 -23310=1,1.000000e-01
+Convolution              Conv_31                  1 1 input.60_splitncnn_0 onnx::Conv_152 0=128 1=1 5=1 6=16384 9=2 -23310=1,1.000000e-01
+Split                    splitncnn_8              1 2 onnx::Conv_152 onnx::Conv_152_splitncnn_0 onnx::Conv_152_splitncnn_1
+Convolution              Conv_33                  1 1 onnx::Conv_152_splitncnn_1 onnx::Conv_154 0=128 1=3 4=1 5=1 6=147456 9=2 -23310=1,1.000000e-01
+Split                    splitncnn_9              1 2 onnx::Conv_154 onnx::Conv_154_splitncnn_0 onnx::Conv_154_splitncnn_1
+Convolution              Conv_35                  1 1 onnx::Conv_154_splitncnn_1 onnx::Concat_156 0=128 1=3 4=1 5=1 6=147456 9=2 -23310=1,1.000000e-01
+Concat                   Concat_37                4 1 onnx::Concat_156 onnx::Conv_154_splitncnn_0 onnx::Conv_152_splitncnn_0 onnx::Concat_150 input.80
+Convolution              Conv_38                  1 1 input.80 onnx::MaxPool_159 0=256 1=1 5=1 6=131072 9=2 -23310=1,1.000000e-01
+Split                    splitncnn_10             1 2 onnx::MaxPool_159 onnx::MaxPool_159_splitncnn_0 onnx::MaxPool_159_splitncnn_1
+Pooling                  MaxPool_40               1 1 onnx::MaxPool_159_splitncnn_1 input.88 1=2 2=2 5=1
+Split                    splitncnn_11             1 2 input.88 input.88_splitncnn_0 input.88_splitncnn_1
+Convolution              Conv_41                  1 1 input.88_splitncnn_1 onnx::Concat_162 0=256 1=1 5=1 6=65536 9=2 -23310=1,1.000000e-01
+Convolution              Conv_43                  1 1 input.88_splitncnn_0 onnx::Conv_164 0=256 1=1 5=1 6=65536 9=2 -23310=1,1.000000e-01
+Split                    splitncnn_12             1 2 onnx::Conv_164 onnx::Conv_164_splitncnn_0 onnx::Conv_164_splitncnn_1
+Convolution              Conv_45                  1 1 onnx::Conv_164_splitncnn_1 onnx::Conv_166 0=256 1=3 4=1 5=1 6=589824 9=2 -23310=1,1.000000e-01
+Split                    splitncnn_13             1 2 onnx::Conv_166 onnx::Conv_166_splitncnn_0 onnx::Conv_166_splitncnn_1
+Convolution              Conv_47                  1 1 onnx::Conv_166_splitncnn_1 onnx::Concat_168 0=256 1=3 4=1 5=1 6=589824 9=2 -23310=1,1.000000e-01
+Concat                   Concat_49                4 1 onnx::Concat_168 onnx::Conv_166_splitncnn_0 onnx::Conv_164_splitncnn_0 onnx::Concat_162 input.108
+Convolution              Conv_50                  1 1 input.108 onnx::Conv_171 0=512 1=1 5=1 6=524288 9=2 -23310=1,1.000000e-01
+Split                    splitncnn_14             1 2 onnx::Conv_171 onnx::Conv_171_splitncnn_0 onnx::Conv_171_splitncnn_1
+Convolution              Conv_52                  1 1 onnx::Conv_171_splitncnn_1 onnx::Concat_173 0=256 1=1 5=1 6=131072 9=2 -23310=1,1.000000e-01
+Convolution              Conv_54                  1 1 onnx::Conv_171_splitncnn_0 onnx::MaxPool_175 0=256 1=1 5=1 6=131072 9=2 -23310=1,1.000000e-01
+Split                    splitncnn_15             1 4 onnx::MaxPool_175 onnx::MaxPool_175_splitncnn_0 onnx::MaxPool_175_splitncnn_1 onnx::MaxPool_175_splitncnn_2 onnx::MaxPool_175_splitncnn_3
+Pooling                  MaxPool_56               1 1 onnx::MaxPool_175_splitncnn_3 onnx::Concat_176 1=5 3=2 5=1
+Pooling                  MaxPool_57               1 1 onnx::MaxPool_175_splitncnn_2 onnx::Concat_177 1=9 3=4 5=1
+Pooling                  MaxPool_58               1 1 onnx::MaxPool_175_splitncnn_1 onnx::Concat_178 1=13 3=6 5=1
+Concat                   Concat_59                4 1 onnx::Concat_178 onnx::Concat_177 onnx::Concat_176 onnx::MaxPool_175_splitncnn_0 input.124
+Convolution              Conv_60                  1 1 input.124 onnx::Concat_181 0=256 1=1 5=1 6=262144 9=2 -23310=1,1.000000e-01
+Concat                   Concat_62                2 1 onnx::Concat_181 onnx::Concat_173 input.132
+Convolution              Conv_63                  1 1 input.132 onnx::Conv_184 0=256 1=1 5=1 6=131072 9=2 -23310=1,1.000000e-01
+Split                    splitncnn_16             1 2 onnx::Conv_184 onnx::Conv_184_splitncnn_0 onnx::Conv_184_splitncnn_1
+Convolution              Conv_65                  1 1 onnx::Conv_184_splitncnn_1 onnx::Resize_186 0=128 1=1 5=1 6=32768 9=2 -23310=1,1.000000e-01
+Interp                   Resize_68                1 1 onnx::Resize_186 onnx::Concat_191 0=1 1=2.000000e+00 2=2.000000e+00
+Convolution              Conv_69                  1 1 onnx::MaxPool_159_splitncnn_0 onnx::Concat_193 0=128 1=1 5=1 6=32768 9=2 -23310=1,1.000000e-01
+Concat                   Concat_71                2 1 onnx::Concat_193 onnx::Concat_191 input.148
+Split                    splitncnn_17             1 2 input.148 input.148_splitncnn_0 input.148_splitncnn_1
+Convolution              Conv_72                  1 1 input.148_splitncnn_1 onnx::Concat_196 0=64 1=1 5=1 6=16384 9=2 -23310=1,1.000000e-01
+Convolution              Conv_74                  1 1 input.148_splitncnn_0 onnx::Conv_198 0=64 1=1 5=1 6=16384 9=2 -23310=1,1.000000e-01
+Split                    splitncnn_18             1 2 onnx::Conv_198 onnx::Conv_198_splitncnn_0 onnx::Conv_198_splitncnn_1
+Convolution              Conv_76                  1 1 onnx::Conv_198_splitncnn_1 onnx::Conv_200 0=64 1=3 4=1 5=1 6=36864 9=2 -23310=1,1.000000e-01
+Split                    splitncnn_19             1 2 onnx::Conv_200 onnx::Conv_200_splitncnn_0 onnx::Conv_200_splitncnn_1
+Convolution              Conv_78                  1 1 onnx::Conv_200_splitncnn_1 onnx::Concat_202 0=64 1=3 4=1 5=1 6=36864 9=2 -23310=1,1.000000e-01
+Concat                   Concat_80                4 1 onnx::Concat_202 onnx::Conv_200_splitncnn_0 onnx::Conv_198_splitncnn_0 onnx::Concat_196 input.168
+Convolution              Conv_81                  1 1 input.168 onnx::Conv_205 0=128 1=1 5=1 6=32768 9=2 -23310=1,1.000000e-01
+Split                    splitncnn_20             1 2 onnx::Conv_205 onnx::Conv_205_splitncnn_0 onnx::Conv_205_splitncnn_1
+Convolution              Conv_83                  1 1 onnx::Conv_205_splitncnn_1 onnx::Resize_207 0=64 1=1 5=1 6=8192 9=2 -23310=1,1.000000e-01
+Interp                   Resize_86                1 1 onnx::Resize_207 onnx::Concat_212 0=1 1=2.000000e+00 2=2.000000e+00
+Convolution              Conv_87                  1 1 onnx::MaxPool_147_splitncnn_0 onnx::Concat_214 0=64 1=1 5=1 6=8192 9=2 -23310=1,1.000000e-01
+Concat                   Concat_89                2 1 onnx::Concat_214 onnx::Concat_212 input.184
+Split                    splitncnn_21             1 2 input.184 input.184_splitncnn_0 input.184_splitncnn_1
+Convolution              Conv_90                  1 1 input.184_splitncnn_1 onnx::Concat_217 0=32 1=1 5=1 6=4096 9=2 -23310=1,1.000000e-01
+Convolution              Conv_92                  1 1 input.184_splitncnn_0 onnx::Conv_219 0=32 1=1 5=1 6=4096 9=2 -23310=1,1.000000e-01
+Split                    splitncnn_22             1 2 onnx::Conv_219 onnx::Conv_219_splitncnn_0 onnx::Conv_219_splitncnn_1
+Convolution              Conv_94                  1 1 onnx::Conv_219_splitncnn_1 onnx::Conv_221 0=32 1=3 4=1 5=1 6=9216 9=2 -23310=1,1.000000e-01
+Split                    splitncnn_23             1 2 onnx::Conv_221 onnx::Conv_221_splitncnn_0 onnx::Conv_221_splitncnn_1
+Convolution              Conv_96                  1 1 onnx::Conv_221_splitncnn_1 onnx::Concat_223 0=32 1=3 4=1 5=1 6=9216 9=2 -23310=1,1.000000e-01
+Concat                   Concat_98                4 1 onnx::Concat_223 onnx::Conv_221_splitncnn_0 onnx::Conv_219_splitncnn_0 onnx::Concat_217 input.204
+Convolution              Conv_99                  1 1 input.204 onnx::Conv_226 0=64 1=1 5=1 6=8192 9=2 -23310=1,1.000000e-01
+Split                    splitncnn_24             1 2 onnx::Conv_226 onnx::Conv_226_splitncnn_0 onnx::Conv_226_splitncnn_1
+Convolution              Conv_101                 1 1 onnx::Conv_226_splitncnn_1 onnx::Concat_228 0=128 1=3 3=2 4=1 5=1 6=73728 9=2 -23310=1,1.000000e-01
+Concat                   Concat_103               2 1 onnx::Concat_228 onnx::Conv_205_splitncnn_0 input.216
+Split                    splitncnn_25             1 2 input.216 input.216_splitncnn_0 input.216_splitncnn_1
+Convolution              Conv_104                 1 1 input.216_splitncnn_1 onnx::Concat_231 0=64 1=1 5=1 6=16384 9=2 -23310=1,1.000000e-01
+Convolution              Conv_106                 1 1 input.216_splitncnn_0 onnx::Conv_233 0=64 1=1 5=1 6=16384 9=2 -23310=1,1.000000e-01
+Split                    splitncnn_26             1 2 onnx::Conv_233 onnx::Conv_233_splitncnn_0 onnx::Conv_233_splitncnn_1
+Convolution              Conv_108                 1 1 onnx::Conv_233_splitncnn_1 onnx::Conv_235 0=64 1=3 4=1 5=1 6=36864 9=2 -23310=1,1.000000e-01
+Split                    splitncnn_27             1 2 onnx::Conv_235 onnx::Conv_235_splitncnn_0 onnx::Conv_235_splitncnn_1
+Convolution              Conv_110                 1 1 onnx::Conv_235_splitncnn_1 onnx::Concat_237 0=64 1=3 4=1 5=1 6=36864 9=2 -23310=1,1.000000e-01
+Concat                   Concat_112               4 1 onnx::Concat_237 onnx::Conv_235_splitncnn_0 onnx::Conv_233_splitncnn_0 onnx::Concat_231 input.236
+Convolution              Conv_113                 1 1 input.236 onnx::Conv_240 0=128 1=1 5=1 6=32768 9=2 -23310=1,1.000000e-01
+Split                    splitncnn_28             1 2 onnx::Conv_240 onnx::Conv_240_splitncnn_0 onnx::Conv_240_splitncnn_1
+Convolution              Conv_115                 1 1 onnx::Conv_240_splitncnn_1 onnx::Concat_242 0=256 1=3 3=2 4=1 5=1 6=294912 9=2 -23310=1,1.000000e-01
+Concat                   Concat_117               2 1 onnx::Concat_242 onnx::Conv_184_splitncnn_0 input.248
+Split                    splitncnn_29             1 2 input.248 input.248_splitncnn_0 input.248_splitncnn_1
+Convolution              Conv_118                 1 1 input.248_splitncnn_1 onnx::Concat_245 0=128 1=1 5=1 6=65536 9=2 -23310=1,1.000000e-01
+Convolution              Conv_120                 1 1 input.248_splitncnn_0 onnx::Conv_247 0=128 1=1 5=1 6=65536 9=2 -23310=1,1.000000e-01
+Split                    splitncnn_30             1 2 onnx::Conv_247 onnx::Conv_247_splitncnn_0 onnx::Conv_247_splitncnn_1
+Convolution              Conv_122                 1 1 onnx::Conv_247_splitncnn_1 onnx::Conv_249 0=128 1=3 4=1 5=1 6=147456 9=2 -23310=1,1.000000e-01
+Split                    splitncnn_31             1 2 onnx::Conv_249 onnx::Conv_249_splitncnn_0 onnx::Conv_249_splitncnn_1
+Convolution              Conv_124                 1 1 onnx::Conv_249_splitncnn_1 onnx::Concat_251 0=128 1=3 4=1 5=1 6=147456 9=2 -23310=1,1.000000e-01
+Concat                   Concat_126               4 1 onnx::Concat_251 onnx::Conv_249_splitncnn_0 onnx::Conv_247_splitncnn_0 onnx::Concat_245 input.268
+Convolution              Conv_127                 1 1 input.268 onnx::Conv_254 0=256 1=1 5=1 6=131072 9=2 -23310=1,1.000000e-01
+Convolution              Conv_129                 1 1 onnx::Conv_226_splitncnn_0 onnx::Conv_256 0=128 1=3 4=1 5=1 6=73728 9=2 -23310=1,1.000000e-01
+Convolution              Conv_131                 1 1 onnx::Conv_240_splitncnn_0 onnx::Conv_258 0=256 1=3 4=1 5=1 6=294912 9=2 -23310=1,1.000000e-01
+Convolution              Conv_133                 1 1 onnx::Conv_254 onnx::Conv_260 0=512 1=3 4=1 5=1 6=1179648 9=2 -23310=1,1.000000e-01
+Convolution              Conv_135                 1 1 onnx::Conv_256 onnx::Reshape_261 0=255 1=1 5=1 6=32640
+Reshape                  Reshape_136              1 1 onnx::Reshape_261 onnx::Transpose_273 0=-1 1=85 2=3
+Permute                  Transpose_137            1 1 onnx::Transpose_273 output 0=1
+Convolution              Conv_138                 1 1 onnx::Conv_258 onnx::Reshape_275 0=255 1=1 5=1 6=65280
+Reshape                  Reshape_139              1 1 onnx::Reshape_275 onnx::Transpose_287 0=-1 1=85 2=3
+Permute                  Transpose_140            1 1 onnx::Transpose_287 288 0=1
+Convolution              Conv_141                 1 1 onnx::Conv_260 onnx::Reshape_289 0=255 1=1 5=1 6=130560
+Reshape                  Reshape_142              1 1 onnx::Reshape_289 onnx::Transpose_301 0=-1 1=85 2=3
+Permute                  Transpose_143            1 1 onnx::Transpose_301 302 0=1
