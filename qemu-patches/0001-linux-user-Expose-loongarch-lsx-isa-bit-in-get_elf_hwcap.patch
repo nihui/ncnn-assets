@@ -1,0 +1,15 @@
+diff --git a/linux-user/elfload.c b/linux-user/elfload.c
+index 418ad92598..3efbe6d2e4 100644
+--- a/linux-user/elfload.c
++++ b/linux-user/elfload.c
+@@ -1056,6 +1056,10 @@ static uint32_t get_elf_hwcap(void)
+         hwcaps |= HWCAP_LOONGARCH_LAM;
+     }
+ 
++    if (FIELD_EX32(cpu->env.cpucfg[2], CPUCFG2, LSX)) {
++        hwcaps |= HWCAP_LOONGARCH_LSX;
++    }
++
+     return hwcaps;
+ }
+ 
